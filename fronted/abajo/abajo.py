@@ -8,10 +8,10 @@ abajo = dbc.Container(
     [
         dbc.Row( # Una fila 
             [
-                dbc.Col('GRAFICA', md=6, style ={'background-color':'pink'}), # Una columna con el nombre grafica 
-                dbc.Col(propiedades, md=6, style ={'background-color':'pink'}),# Una columna con las propiedades geométricas
+                dbc.Col('GRAFICA', md=6, style ={'background-color':'#C88DDF'}), # Una columna con el nombre grafica 
+                dbc.Col(propiedades, md=6, style ={'background-color':'#C88DDF'}),# Una columna con las propiedades geométricas
                 
-    ]
+    ], 
         )
         
     ]
