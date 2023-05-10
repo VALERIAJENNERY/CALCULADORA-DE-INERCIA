@@ -6,7 +6,7 @@ propiedades = html.Div(
     [  # Se crea una fila.
         dbc.Row(
             [
-                dbc.Col('PROPIEDADES GEOMÉTRICAS', md=12, style ={'background-color':'pink'}) # Se crea una columna con el titulo.
+                dbc.Col('PROPIEDADES GEOMÉTRICAS', md=12, style ={'background-color':'#C88DDF'}) # Se crea una columna con el titulo.
             ],
         ), 
         # Se crea una fila.

@@ -20,15 +20,15 @@ app.layout = dbc.Container(
         dbc.Row(
             [
                 dbc.Col(navegador, md=12, style ={'background-color':'white'}), # Se genera una columna para el titulo
-                dbc.Col('Valeria Hernandez - 20222579021', md=12, style ={'background-color':'pink'}), # Se genera una columna para los nombres 
-                dbc.Col('María Rojas - 20222579030', md=12, style ={'background-color':'pink'}), # Se genera una columna para los nombres
+                dbc.Col('Valeria Hernandez - 20222579021', md=4, style ={'background-color':'#C88DDF', "font-family": "Arial Narrow", "color": "Black", "font-weight": "bold", "text-align": "center"}),
+                dbc.Col('María Rojas - 20222579030', md=4, style ={'background-color':'#C88DDF', "font-family": "Arial Narrow", "color": "Black", "font-weight": "bold", "text-align": "center"}),
                 dbc.Col(arriba, md=12, style ={'background-color':'white'}), # Se genera una columna para el subtitulo
                 dbc.Col(botones, md=12, style ={'background-color':'white'}), # Se genera una columna para los botones 
                 dbc.Col(datos1, md=8, style ={'background-color':'white'}), # Se genera una columna para el primer dato de acceso 
                 dbc.Col(datos2, md=8, style ={'background-color':'white'}),# Se genera una columna para el segundo dato de acceso 
                 dbc.Col(aceptar, md=8, style ={'background-color':'white'}), # Se genera una columna parael botón de calcular 
-                dbc.Col(abajo, md=12, style ={'background-color':'pink'}), # Se genera una columna que contenga la gráfica y los datos de salida
-            ]
+                dbc.Col(abajo, md=12, style ={'background-color':'#C88DDF'}), # Se genera una columna que contenga la gráfica y los datos de salida
+            ], style={'justify-content': 'center'} 
         )
     ]
 )

@@ -1,8 +1,9 @@
 import dash_bootstrap_components as dbc # importar los componentes de Bootstrap
-
+from dash import html # importar dash 
 # Se crea una variable que contenga los siguientes datos:
 datos1 = dbc.Row(
-    [
+    [ 
+        html.Hr(style={'margin-bottom': '20px'}),
         dbc.Label("Altura (h)", html_for="h", width=2), #Se crea una casilla que contenga el titulo 
         dbc.Col(
             dbc.Input( # Se crea un imput para que el usuario logre digitar el dato solicitado
