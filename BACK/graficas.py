@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def graficar_rectangulo(b, h):
-    # Crear la figura y el objeto de los ejes
+    #  Se crea la figura y el objeto de los ejes
     fig, ax = plt.subplots()
 
     # Dibujar el rectángulo en los ejes
@@ -22,7 +22,7 @@ def graficar_rectangulo(b, h):
     # Mostrar el gráfico
     plt.show()
 
-graficar_rectangulo(4, 6)
+graficar_rectangulo(4, 6) #Se llama la funcion
 
 def graficar_circulo(r):
     # Crear un arreglo de valores x e y
@@ -54,7 +54,7 @@ def graficar_circulo(r):
     # Mostrar el gráfico
     plt.show()
 
-graficar_circulo(5)
+graficar_circulo(5) #Se llama la funcion
 
 def graficar_semicirculo(r):
     # Crear un arreglo de valores x para el semicírculo
@@ -82,7 +82,7 @@ def graficar_semicirculo(r):
 
     # Mostrar el gráfico
     plt.show()
-graficar_semicirculo(3)
+graficar_semicirculo(3) #Se llama la funcion
 
 def graficar_cuarto_circulo(r):
     # Crear un arreglo de valores x para la mitad superior
@@ -110,7 +110,7 @@ def graficar_cuarto_circulo(r):
     # Mostrar el gráfico
     plt.show()
 
-graficar_cuarto_circulo(5)
+graficar_cuarto_circulo(5) #Se llama la funcion
 
 def graficar_sector(r, angulo):
     # Verificar que el radio esté en el rango correcto
@@ -143,7 +143,7 @@ def graficar_sector(r, angulo):
 
     # Mostrar el gráfico
     plt.show()
-graficar_sector(2, 30)
+graficar_sector(2, 30)#Se llama la funcion
 
 def graficar_triangulo(b, h, a):
     # Verificar que la base, altura y a estén en el rango correcto
@@ -181,4 +181,4 @@ def graficar_triangulo(b, h, a):
 
     # Mostrar el gráfico
     plt.show()
-graficar_triangulo(3, 4, 1)
+graficar_triangulo(3, 4, 1) #Se llama la funcion
