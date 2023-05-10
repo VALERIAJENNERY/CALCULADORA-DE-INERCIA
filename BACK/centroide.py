@@ -31,7 +31,7 @@ def c_cuartodecirculo (r): #Se crea una funcion para calcular el centroide de la
 c_cuartodecirculo (2) #Se llama a la función
 
 def c_sectorcircular (r,an): #Se crea una funcion para calcular el centroide de la figura
-    cx_seccir=(2*r*(math.sin(an)))/(3*an) #Se calculan los centroides para el eje x y y
+    cx_seccir=(2*r*(math.sin(an/2)))/((3/2)*an) #Se calculan los centroides para el eje x y y
     cy_seccir=0
     print("El centroide con respecto al eje x es: ", cx_seccir, "m") #Se imprimen los resultados
     print("El centroide con respecto al eje y es: ", cy_seccir, "m")

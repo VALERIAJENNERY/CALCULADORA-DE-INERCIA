@@ -36,8 +36,8 @@ def i_cuartodecirculo (r): #Se crea una funcion para calcular la inercia y la co
 i_cuartodecirculo (2) #Se llama a la función
 
 def i_sectorcircular (r,an): #Se crea una funcion para calcular la inercia y la constante torcional de la figura
-    ix_seccir=(r**4)*((2*an)-(math.sin(2*an)))/8 #Se realizan los calculos para las inercias y la constante torcional (J)
-    iy_seccir=(r**4)*((2*an)+(math.sin(2*an)))/8
+    ix_seccir=(r**4)*((an)-(math.sin(an)))/8 #Se realizan los calculos para las inercias y la constante torcional (J)
+    iy_seccir=(r**4)*((an)+(math.sin(an)))/8
     j_seccir=(ix_seccir+iy_seccir)
     print("El momento de inercia con respecto al eje x es: ", ix_seccir, "m\xb3") #Se imprimen los resultados
     print("El momento de inercia con respecto al eje y es: ", iy_seccir, "m\xb3")
