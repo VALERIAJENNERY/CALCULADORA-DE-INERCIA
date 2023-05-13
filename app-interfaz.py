@@ -4,7 +4,7 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 
 # Importar backend
-from BACK.areas import a_rectangulo
+from back.areas import a_rectangulo
 # Importar frontend
 from fronted.navegador.navegador import navegador
 from fronted.arriba.arriba import arriba

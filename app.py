@@ -1,7 +1,7 @@
-from BACK.areas import * #Se importan los codigos de las funciones para calcular area
-from BACK.centroide import * #Se importan los codigos de las funciones para calcular los centroides
-from BACK.inercia import * #Se importan los codigos de las funciones para calcular las inercias
-from BACK.graficas import * #Se importa el codgico con las funciones para graficar las figuras
+from back.areas import * #Se importan los codigos de las funciones para calcular area
+from back.centroide import * #Se importan los codigos de las funciones para calcular los centroides
+from back.inercia import * #Se importan los codigos de las funciones para calcular las inercias
+from back.graficas import * #Se importa el codgico con las funciones para graficar las figuras
 
 figura=input('Seleccione una figura geometrica:') #Se crea un input para la selección de la figura geométrica
 
