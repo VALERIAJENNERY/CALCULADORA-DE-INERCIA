@@ -6,7 +6,7 @@ altura_rec = dbc.Row(
     [
         html.Div(
             [
-                html.Label('Altura (h): ', style={'display': 'inline-block', 'width': '120px'}),
+                html.Label('Altura (H): ', style={'display': 'inline-block', 'width': '120px'}),
                 dcc.Input(id='entrada_altura_rec', value=5, type='number', style={'display': 'inline-block','margin-bottom': '10px'}),
                 html.Label('m', style={'display': 'inline-block', 'width': '120px'}),
                 html.Hr(style={'display': 'none'})
@@ -14,7 +14,7 @@ altura_rec = dbc.Row(
         ),
         html.Div(
             [
-                html.Label('Base (b): ', style={'display': 'inline-block', 'width': '120px'}),
+                html.Label('Base (B): ', style={'display': 'inline-block', 'width': '120px'}),
                 dcc.Input(id='entrada_base_rec', value=5, type='number', style={'display': 'inline-block','margin-bottom': '10px'}),
                 html.Label('m', style={'display': 'inline-block', 'width': '120px'}),
                 html.Hr(style={'display': 'none'})
