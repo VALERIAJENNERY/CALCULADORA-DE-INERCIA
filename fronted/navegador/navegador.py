@@ -12,6 +12,6 @@ navegador = dbc.Container(
           
         ], style={"display": "flex", "align-items": "center", "justify-content": "center"},
             ),
-          html.Hr(style={"border": "5px solid purple"})
+          html.Hr(style={"border": "20px solid purple"})
     ]
 )
