@@ -17,7 +17,7 @@ radio_arco = dbc.Row(
             [
                 html.Label('Ángulo (α): ', style={'display': 'inline-block', 'width': '120px'}),
                 dcc.Input(id='entrada_angulo_sector', value=5, type='number', style={'display': 'inline-block','margin-bottom': '10px'}),
-                html.Label('m', style={'display': 'inline-block', 'width': '120px'}),
+                html.Label('grados', style={'display': 'inline-block', 'width': '120px'}),
                 html.Hr(style={'display': 'none'})
             ]
         ),

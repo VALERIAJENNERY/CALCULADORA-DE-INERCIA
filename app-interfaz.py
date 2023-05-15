@@ -106,7 +106,7 @@ app.layout = dbc.Container(
                 
                 dbc.Col(aceptar, md=8, style={'background-color': 'white'}),
                 
-                dbc.Col(abajo, md=12, style={'background-color': '#C88DDF'}),
+                dbc.Col(abajo, md=12, style={'background-color': '#C88DD'}),
                 
             ], style={'justify-content': 'center'}
         )
