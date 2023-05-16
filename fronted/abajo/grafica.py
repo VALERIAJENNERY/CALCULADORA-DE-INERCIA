@@ -14,4 +14,9 @@ contenido = html.Div(
                                'margin-bottom': '10px'}) # Se crea una columna con el titulo.
             ],
         ), 
+        dbc.Row(
+            [
+                dbc.Col(id="salida_grafica_rec", style={'text-align': 'center'}) # Se crea una columna con el titulo.
+            ],
+        ), 
 ])

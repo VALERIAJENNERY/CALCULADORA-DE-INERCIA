@@ -4,7 +4,10 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output,State
 
 # Importar backend
-from back.areas import a_rectangulo
+from BACK.areas import *
+from BACK.centroide import*
+from BACK.inercia import *
+from BACK.graficas import *
 # Importar frontend
 from fronted.navegador.navegador import navegador
 from fronted.arriba.arriba import arriba
@@ -227,19 +230,87 @@ def datos_rec(n_clicks, children):
     else:
         return html.Div(id='resultado_triangulo', children=[])
     
-# para el funcionamiento 
+# para el funcionamiento del area del rectangulo
 @app.callback(
     Output('salida_altura_rec', 'children'),
-    [Input('entrada_altura_rec', 'value'),
-     Input('entrada_base_rec', 'value')]
+    [Input('entrada_base_rec', 'value'),
+     Input('entrada_altura_rec', 'value')]
 )
 
 
 def a_rectanguloDash(entrada_base_rec,entrada_altura_rec):
 
     area_rec = a_rectangulo(entrada_base_rec,entrada_altura_rec)
+    return "{:.2f} m\xb2".format(area_rec)
+  
 
-    return "El área del rectángulo es: ", area_rec, "m\xb2"
+# Para el funcionmiento de los centroides
+@app.callback(
+    Output('salida_cx_rec', 'children'),
+    [Input('entrada_base_rec', 'value'),
+     Input('entrada_altura_rec', 'value')]
+)
 
+
+def cx_rectanguloDash(entrada_base_rec,entrada_altura_rec):
+
+    cx_rec = cx_rectangulo(entrada_base_rec,entrada_altura_rec)
+
+    return "{:.2f} m".format(cx_rec)
+
+@app.callback(
+    Output('salida_cy_rec', 'children'),
+    [Input('entrada_base_rec', 'value'),
+     Input('entrada_altura_rec', 'value')]
+)
+def cy_rectanguloDash(entrada_base_rec,entrada_altura_rec):
+
+    cy_rec = cy_rectangulo(entrada_base_rec,entrada_altura_rec)
+
+    return "{:.2f} m".format(cy_rec)
+@app.callback(
+    Output('salida_ix_rec', 'children'),
+    [Input('entrada_base_rec', 'value'),
+     Input('entrada_altura_rec', 'value')]
+)
+def ix_rectanguloDash(entrada_base_rec,entrada_altura_rec):
+
+    ix_rec = ix_rectangulo(entrada_base_rec,entrada_altura_rec)
+
+    return "{:.2f} m⁴".format(ix_rec)
+
+@app.callback(
+    Output('salida_iy_rec', 'children'),
+    [Input('entrada_base_rec', 'value'),
+     Input('entrada_altura_rec', 'value')]
+)
+def ix_rectanguloDash(entrada_base_rec,entrada_altura_rec):
+
+    iy_rec = iy_rectangulo(entrada_base_rec,entrada_altura_rec)
+
+    return "{:.2f} m⁴".format(iy_rec)
+@app.callback(
+    Output('salida_j_rec', 'children'),
+    [Input('entrada_base_rec', 'value'),
+     Input('entrada_altura_rec', 'value')]
+)
+def j_rectanguloDash(entrada_base_rec,entrada_altura_rec):
+
+    j_rec = j_rectangulo(entrada_base_rec,entrada_altura_rec)
+
+    return "{:.2f} m⁴".format(j_rec)
+
+@app.callback(
+    Output('salida_grafica_rec', 'children'),
+    [Input('entrada_base_rec', 'value'),
+     Input('entrada_altura_rec', 'value')]
+)
+def grafica_rectanguloDash(entrada_base_rec,entrada_altura_rec):
+
+    encoded_image= graficar_rectangulo(entrada_base_rec, entrada_altura_rec)
+
+    image_element = html.Img(src="data:image/png;base64,{}".format(encoded_image))
+    return html.Div([image_element])
 if __name__ == "__main__":
     app.run_server(debug=True)
+

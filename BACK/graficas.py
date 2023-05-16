@@ -1,28 +1,37 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import io
+import base64
 
-def graficar_rectangulo(b, h):
+def graficar_rectangulo(entrada_base_rec,entrada_altura_rec):
     #  Se crea la figura y el objeto de los ejes
+    
     fig, ax = plt.subplots()
 
     # Dibujar el rectángulo en los ejes
-    rect = plt.Rectangle((0, 0), b, h, linewidth=1, edgecolor='r', facecolor='grey')
+    rect = plt.Rectangle((0, 0), entrada_base_rec, entrada_altura_rec, linewidth=1, edgecolor='r', facecolor='grey')
     ax.add_patch(rect)
 
     # Establecer las etiquetas de los ejes y el título del gráfico
     ax.set_xlabel('Base')
     ax.set_ylabel('Altura')
-    ax.set_title('Rectángulo de Base {} y Altura {}'.format(b, h))
+    ax.set_title('Rectángulo de Base {} y Altura {}'.format(entrada_base_rec,entrada_altura_rec))
 
     # Establecer los límites de los ejes
-    ax.set_xlim(0, b + 0.1 * b)
-    ax.set_ylim(0, h + 0.1 * h)
+    ax.set_xlim(0, entrada_base_rec + 0.1 * entrada_base_rec)
+    ax.set_ylim(0, entrada_altura_rec + 0.1 * entrada_altura_rec)
 
+    # Guardar la figura en un objeto BytesIO
+    fig_buffer = io.BytesIO()
+    plt.savefig(fig_buffer, format='png')
+    plt.close()
 
-    # Mostrar el gráfico
-    plt.show()
+    fig_buffer.seek(0)
 
-graficar_rectangulo(4, 6) #Se llama la funcion
+    encoded_image = base64.b64encode(fig_buffer.getvalue()).decode()
+    # Crear la figura HTML con Dash
+    return encoded_image
+    
 
 def graficar_circulo(r):
     # Crear un arreglo de valores x e y
@@ -54,7 +63,7 @@ def graficar_circulo(r):
     # Mostrar el gráfico
     plt.show()
 
-graficar_circulo(5) #Se llama la funcion
+
 
 def graficar_semicirculo(r):
     # Crear un arreglo de valores x para el semicírculo
@@ -82,7 +91,7 @@ def graficar_semicirculo(r):
 
     # Mostrar el gráfico
     plt.show()
-graficar_semicirculo(3) #Se llama la funcion
+
 
 def graficar_cuarto_circulo(r):
     # Crear un arreglo de valores x para la mitad superior
@@ -110,7 +119,7 @@ def graficar_cuarto_circulo(r):
     # Mostrar el gráfico
     plt.show()
 
-graficar_cuarto_circulo(5) #Se llama la funcion
+
 
 def graficar_sector(r, angulo):
     # Verificar que el radio esté en el rango correcto
@@ -143,7 +152,7 @@ def graficar_sector(r, angulo):
 
     # Mostrar el gráfico
     plt.show()
-graficar_sector(2, 30)#Se llama la funcion
+
 
 def graficar_triangulo(b, h, a):
     # Verificar que la base, altura y a estén en el rango correcto
@@ -181,4 +190,3 @@ def graficar_triangulo(b, h, a):
 
     # Mostrar el gráfico
     plt.show()
-graficar_triangulo(3, 4, 1) #Se llama la funcion
