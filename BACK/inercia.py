@@ -73,5 +73,5 @@ def iy_triangulo (entrada_base_trian,entrada_altura_trian,entrada_a_trian):
     return iy_tri
 
 def j_triangulo (entrada_base_trian,entrada_altura_trian,entrada_a_trian):
-    j_tri=(entrada_base_trian*(entrada_altura_trian**3)/36)+(entrada_base_trian*(entrada_altura_trian**3)*((entrada_a_trian**2)-entrada_a_trian*entrada_base_trian+(entrada_base_trian**2))/36)
+    j_tri=(entrada_base_trian*(entrada_altura_trian**3)/36)+(entrada_base_trian*(entrada_altura_trian)*((entrada_a_trian**2)-entrada_a_trian*entrada_base_trian+(entrada_base_trian**2))/36)
     return j_tri
