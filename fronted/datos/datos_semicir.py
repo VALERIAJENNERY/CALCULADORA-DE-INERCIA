@@ -18,3 +18,10 @@ radio_semicir = dbc.Row(
 )
 
 datos_semicir = html.Div(id="resultado_semicirculo",children=[],)
+
+area_semicirculo=html.Div(html.Label(id='salida_a_semicirculo'))
+cx_semicirculo=html.Div(html.Label(id='salida_cx_semicir'))
+cy_semicirculo=html.Div(html.Label(id='salida_cy_semicir'))
+ix_semicirculo=html.Div(html.Label(id='salida_ix_semicir'))
+iy_semicirculo=html.Div(html.Label(id='salida_iy_semicir'))
+j_semicirculo=html.Div(html.Label(id='salida_j_semicir'))

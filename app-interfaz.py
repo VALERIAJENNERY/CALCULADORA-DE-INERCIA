@@ -21,7 +21,7 @@ from fronted.datos.datos_trian import altura_trian,datos_trian
 from fronted.abajo.abajo import abajo
 from fronted.abajo.calculosRec import abajo_Rec
 from fronted.abajo.calculosCir import abajo_Cir
-
+from fronted.abajo.calculosSemicir import abajo_Semicir
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],suppress_callback_exceptions=True)
 
 
@@ -255,6 +255,16 @@ def a_circuloDash(entrada_circulo):
     area_cir = a_circulo(entrada_circulo)
     return "{:.2f} m\xb2".format(area_cir)
 
+@app.callback(
+    Output('salida_a_semicirculo', 'children'),
+    [Input('entrada_semicirculo', 'value'),
+    ]
+)
+
+def a_semicirculoDash(entrada_semicirculo):
+    area_semicir = a_semicirculo(entrada_semicirculo)
+    return "{:.2f} m\xb2".format(area_semicir)
+
 # Para el funcionamiento de los centroides 
 @app.callback(
     Output('salida_cx_rec', 'children'),
@@ -274,13 +284,22 @@ def cx_rectanguloDash(entrada_base_rec,entrada_altura_rec):
     [Input('entrada_circulo', 'value'),
      ]
 )
-
-
 def cx_circuloDash(entrada_circulo):
 
     cx_cir = cx_circulo(entrada_circulo)
 
     return "{:.2f} m".format(cx_cir)
+
+@app.callback(
+    Output('salida_cx_semicir', 'children'),
+    [Input('entrada_semicirculo', 'value'),
+     ]
+)
+def cx_semicirculoDash(entrada_semicirculo):
+
+    cx_semicir = cx_semicirculo(entrada_semicirculo)
+
+    return "{:.2f} m".format(cx_semicir)
 
 @app.callback(
     Output('salida_cy_rec', 'children'),
@@ -299,12 +318,23 @@ def cy_rectanguloDash(entrada_base_rec,entrada_altura_rec):
      ]
 )
 
-
 def cy_circuloDash(entrada_circulo):
 
     cy_cir = cy_circulo(entrada_circulo)
 
     return "{:.2f} m".format(cy_cir)
+
+@app.callback(
+    Output('salida_cy_semicir', 'children'),
+    [Input('entrada_semicirculo', 'value'),
+     ]
+)
+
+def cy_semicirculoDash(entrada_semicirculo):
+
+    cy_semicir = cy_semicirculo(entrada_semicirculo)
+
+    return "{:.2f} m".format(cy_semicir)
 # Para el funcionamiento de las inercias del rectangulo y la grafica
 @app.callback(
     Output('salida_ix_rec', 'children'),
@@ -329,6 +359,17 @@ def ix_circuloDash(entrada_circulo):
     return "{:.2f} m⁴".format(ix_cir)
 
 @app.callback(
+    Output('salida_ix_semicir', 'children'),
+    [Input('entrada_semicirculo', 'value'),
+     ]
+)
+def ix_semicirculoDash(entrada_semicirculo):
+
+    ix_semicir = ix_semicirculo(entrada_semicirculo)
+
+    return "{:.2f} m⁴".format(ix_semicir)
+
+@app.callback(
     Output('salida_iy_rec', 'children'),
     [Input('entrada_base_rec', 'value'),
      Input('entrada_altura_rec', 'value')]
@@ -349,6 +390,17 @@ def iy_circuloDash(entrada_circulo):
     iy_cir = iy_circulo(entrada_circulo)
 
     return "{:.2f} m⁴".format(iy_cir)
+
+@app.callback(
+    Output('salida_iy_semicir', 'children'),
+    [Input('entrada_semicirculo', 'value'),
+     ]
+)
+def iy_semicirculoDash(entrada_semicirculo):
+
+    iy_semicir = iy_semicirculo(entrada_semicirculo)
+
+    return "{:.2f} m⁴".format(iy_semicir)
 
 @app.callback(
     Output('salida_j_rec', 'children'),
@@ -373,6 +425,17 @@ def j_circuloDash(entrada_circulo):
     return "{:.2f} m⁴".format(j_cir)
 
 @app.callback(
+    Output('salida_j_semicir', 'children'),
+    [Input('entrada_semicirculo', 'value'),
+     ]
+)
+def j_semicirculoDash(entrada_semicirculo):
+
+    j_semicir = j_semicirculo(entrada_semicirculo)
+
+    return "{:.2f} m⁴".format(j_semicir)
+
+@app.callback(
     Output('salida_grafica_rec', 'children'),
     [Input('entrada_base_rec', 'value'),
      Input('entrada_altura_rec', 'value')]
@@ -392,6 +455,18 @@ def grafica_rectanguloDash(entrada_base_rec,entrada_altura_rec):
 def grafica_circuloDash(entrada_circulo):
 
     encoded_image= graficar_circulo(entrada_circulo)
+
+    image_element = html.Img(src="data:image/png;base64,{}".format(encoded_image))
+    return html.Div([image_element])
+
+@app.callback(
+    Output('salida_grafica_semicir', 'children'),
+    [Input('entrada_semicirculo', 'value'),
+     ]
+)
+def grafica_semicirculoDash(entrada_semicirculo):
+
+    encoded_image= graficar_semicirculo(entrada_semicirculo)
 
     image_element = html.Img(src="data:image/png;base64,{}".format(encoded_image))
     return html.Div([image_element])
@@ -418,7 +493,7 @@ def mostrar_calculos(n_clicks_calcular, n_clicks_rectangulo, n_clicks_circulo, n
         elif n_clicks_circulo and not n_clicks_rectangulo and not n_clicks_semicirculo and not n_clicks_cuarto and not n_clicks_arco and not n_clicks_triangulo:
             return abajo_Cir  # Resultado para el círculo
         elif n_clicks_semicirculo and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_cuarto and not n_clicks_arco and not n_clicks_triangulo:
-            return '¿Cómo estás?'  # Resultado para el semicírculo
+            return abajo_Semicir  # Resultado para el semicírculo
         elif n_clicks_cuarto and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_arco and not n_clicks_triangulo:
             return 'mora'  # Resultado para el semicírculo
         elif n_clicks_arco and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_cuarto and not n_clicks_triangulo:

@@ -25,11 +25,18 @@ def j_circulo(entrada_circulo):
     return j_cir
 
 
-def i_semicirculo(r): #Se crea una funcion para calcular la inercia y la constante torcional de la figura
-    ix_semicir=0.1098*(r**4) #Se realizan los calculos para las inercias y la constante torcional (J)
-    j_semicir=(ix_semicir)
-    print("El momento de inercia con respecto al eje x es: ", ix_semicir, "m\xb3") #Se imprimen los resultados
-    print("La constante torcional y es: ", j_semicir, "m\xb3")
+def ix_semicirculo(entrada_semicirculo): #Se crea una funcion para calcular la inercia y la constante torcional de la figura
+    ix_semicir=((math.pi)*(entrada_semicirculo**4))/8 #Se realizan los calculos para las inercias y la constante torcional (J)
+    return ix_semicir
+
+def iy_semicirculo(entrada_semicirculo): #Se crea una funcion para calcular la inercia y la constante torcional de la figura
+    iy_semicir=((math.pi)*(entrada_semicirculo**4))/8
+    return iy_semicir
+
+def j_semicirculo(entrada_semicirculo):
+    j_semicir=(((math.pi)*(entrada_semicirculo**4))/8)*2
+    return j_semicir
+    
 
 
 def i_cuartodecirculo (r): #Se crea una funcion para calcular la inercia y la constante torcional de la figura

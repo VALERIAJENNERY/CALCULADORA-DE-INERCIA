@@ -11,7 +11,7 @@ def a_circulo(entrada_circulo): #Se crea una funcion para calcular el area de la
 
 def a_semicirculo(entrada_semicirculo): #Se crea una funcion para calcular el area de la figura
     area_semicir=(math.pi*(entrada_semicirculo**2))/2 #Se calcula el área
-    print("El área del semicírculo es: ", area_semicir, "m\xb2") #Se imprime el resultado
+    return area_semicir
 
 
 def a_cuartodecirculo (entrada_cuartocirculo): #Se crea una funcion para calcular el area de la figura

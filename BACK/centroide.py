@@ -18,11 +18,13 @@ def cy_circulo(entrada_circulo):#Se crea una funcion para calcular el centroide 
     cy_cir=entrada_circulo
     return cy_cir
     
-def c_semicirculo(r): #Se crea una funcion para calcular el centroide de la figura
+def cx_semicirculo(entrada_semicirculo): #Se crea una funcion para calcular el centroide de la figura
     cx_semicir=0 #Se calculan los centroides para el eje x y y
+    return cx_semicir
 
-    cy_semicir=4*r/(3*math.pi)
-   
+def cy_semicirculo(entrada_semicirculo): #Se crea una funcion para calcular el centroide de la figura
+    cy_semicir=4*entrada_semicirculo/(3*math.pi)
+    return cy_semicir
 
 def c_cuartodecirculo (r): #Se crea una funcion para calcular el centroide de la figura
     cx_cuarcir=4*r/(3*math.pi) #Se calculan los centroides para el eje x y y

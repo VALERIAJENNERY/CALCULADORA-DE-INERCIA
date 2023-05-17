@@ -72,12 +72,12 @@ def graficar_circulo(entrada_circulo):
     return encoded_image
 
 
-def graficar_semicirculo(r):
+def graficar_semicirculo(entrada_semicirculo):
     # Crear un arreglo de valores x para el semicírculo
-    x = np.linspace(-r, r, 1000)
+    x = np.linspace(-entrada_semicirculo, entrada_semicirculo, 1000)
 
     # Crear un arreglo de valores y para la mitad superior
-    y = np.sqrt(r**2 - x**2)
+    y = np.sqrt(entrada_semicirculo**2 - x**2)
     y = np.where(y.imag==0, y.real, np.nan)
 
     # Crear una figura y objeto de ejes
@@ -90,14 +90,22 @@ def graficar_semicirculo(r):
     # Establecer las etiquetas de los ejes y el título del gráfico
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
-    ax.set_title('Semicírculo de Radio {}'.format(r))
+    ax.set_title('Semicírculo de Radio {}'.format(entrada_semicirculo))
 
     # Establecer los límites de los ejes
-    ax.set_xlim(-1.1 * r, 1.1 * r)
-    ax.set_ylim(-0.1 * r, 1.1 * r)
+    ax.set_xlim(-1.1 * entrada_semicirculo, 1.1 * entrada_semicirculo)
+    ax.set_ylim(-0.1 * entrada_semicirculo, 1.1 * entrada_semicirculo)
 
-    # Mostrar el gráfico
-    plt.show()
+    # Guardar la figura en un objeto BytesIO
+    fig_buffer = io.BytesIO()
+    plt.savefig(fig_buffer, format='png')
+    plt.close()
+
+    fig_buffer.seek(0)
+
+    encoded_image = base64.b64encode(fig_buffer.getvalue()).decode()
+    # Crear la figura HTML con Dash
+    return encoded_image
 
 
 def graficar_cuarto_circulo(r):
