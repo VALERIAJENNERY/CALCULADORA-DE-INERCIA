@@ -69,7 +69,7 @@ def ix_triangulo (entrada_base_trian,entrada_altura_trian,entrada_a_trian): #Se 
     return ix_tri
 
 def iy_triangulo (entrada_base_trian,entrada_altura_trian,entrada_a_trian):
-    iy_tri=entrada_base_trian*(entrada_altura_trian**3)*((entrada_a_trian**2)-entrada_a_trian*entrada_base_trian+(entrada_base_trian**2))/36
+    iy_tri=entrada_base_trian*(entrada_altura_trian)*((entrada_a_trian**2)-entrada_a_trian*entrada_base_trian+(entrada_base_trian**2))/36
     return iy_tri
 
 def j_triangulo (entrada_base_trian,entrada_altura_trian,entrada_a_trian):
