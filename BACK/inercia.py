@@ -39,13 +39,17 @@ def j_semicirculo(entrada_semicirculo):
     
 
 
-def i_cuartodecirculo (r): #Se crea una funcion para calcular la inercia y la constante torcional de la figura
-    ix_cuarcir=0.05488*(r**4) #Se realizan los calculos para las inercias y la constante torcional (J)
-    iy_cuarcir=0.05488*(r**4)
-    j_cuarcir=(ix_cuarcir+iy_cuarcir)
-    print("El momento de inercia con respecto al eje x es: ", ix_cuarcir, "m\xb3") #Se imprimen los resultados
-    print("El momento de inercia con respecto al eje y es: ", iy_cuarcir, "m\xb3")
-    print("La constante torcional y es: ", j_cuarcir, "m\xb3")
+def ix_cuartodecirculo (entrada_cuartocirculo): #Se crea una funcion para calcular la inercia y la constante torcional de la figura
+    ix_cuarcir=0.05488*(entrada_cuartocirculo**4) #Se realizan los calculos para las inercias y la constante torcional (J)
+    return ix_cuarcir
+
+def iy_cuartodecirculo (entrada_cuartocirculo):
+    iy_cuarcir=0.05488*(entrada_cuartocirculo**4)
+    return iy_cuarcir
+
+def j_cuartodecirculo (entrada_cuartocirculo):
+    j_cuarcir=0.05488*(entrada_cuartocirculo**4)*2
+    return j_cuarcir
 
 
 def i_sectorcircular (r,an): #Se crea una funcion para calcular la inercia y la constante torcional de la figura

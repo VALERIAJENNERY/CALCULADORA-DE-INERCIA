@@ -16,12 +16,12 @@ def a_semicirculo(entrada_semicirculo): #Se crea una funcion para calcular el ar
 
 def a_cuartodecirculo (entrada_cuartocirculo): #Se crea una funcion para calcular el area de la figura
     area_cuarcir=(math.pi*(entrada_cuartocirculo**2))/4 #Se calcula el área
-    print("El área del cuarto de círculo es: ", area_cuarcir, "m\xb2") #Se imprime el resultado
+    return area_cuarcir
 
 
 def a_sectorcircular (entrada_radio_sector,entrada_angulo_sector): #Se crea una funcion para calcular el area de la figura
-    area_seccir=(math.pi*(entrada_radio_sector**2))*(entrada_angulo_sector/2)/360 #Se calcula el área
-    print("El área del sector circular es: ", area_seccir, "m\xb2") #Se imprime el resultado
+    area_seccir=(math.pi*(entrada_radio_sector**2))*(entrada_angulo_sector)/360 #Se calcula el área
+    return area_seccir
 
 
 def a_triangulo (entrada_base_trian,entrada_altura_trian): #Se crea una funcion para calcular el area de la figura

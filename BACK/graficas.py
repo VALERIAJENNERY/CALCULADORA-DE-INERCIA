@@ -108,12 +108,12 @@ def graficar_semicirculo(entrada_semicirculo):
     return encoded_image
 
 
-def graficar_cuarto_circulo(r):
+def graficar_cuarto_circulo(entrada_cuartocirculo):
     # Crear un arreglo de valores x para la mitad superior
-    x = np.linspace(0, r, 1000)
+    x = np.linspace(0, entrada_cuartocirculo, 1000)
 
     # Crear un arreglo de valores y para la mitad superior
-    y = np.sqrt(r**2 - x**2)
+    y = np.sqrt(entrada_cuartocirculo**2 - x**2)
 
     # Crear una figura y objeto de ejes
     fig, ax = plt.subplots()
@@ -125,14 +125,21 @@ def graficar_cuarto_circulo(r):
     # Establecer las etiquetas de los ejes y el título del gráfico
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
-    ax.set_title('Cuarto de círculo de Radio {}'.format(r))
+    ax.set_title('Cuarto de círculo de Radio {}'.format(entrada_cuartocirculo))
 
     # Establecer los límites de los ejes
-    ax.set_xlim(-0.1 * r, r + 0.1 * r)
-    ax.set_ylim(0, r + 0.1 * r)
+    ax.set_xlim(-0.1 * entrada_cuartocirculo, entrada_cuartocirculo + 0.1 * entrada_cuartocirculo)
+    ax.set_ylim(0, entrada_cuartocirculo + 0.1 * entrada_cuartocirculo)
+    # Guardar la figura en un objeto BytesIO
+    fig_buffer = io.BytesIO()
+    plt.savefig(fig_buffer, format='png')
+    plt.close()
 
-    # Mostrar el gráfico
-    plt.show()
+    fig_buffer.seek(0)
+
+    encoded_image = base64.b64encode(fig_buffer.getvalue()).decode()
+    # Crear la figura HTML con Dash
+    return encoded_image
 
 
 

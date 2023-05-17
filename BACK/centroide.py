@@ -26,9 +26,13 @@ def cy_semicirculo(entrada_semicirculo): #Se crea una funcion para calcular el c
     cy_semicir=4*entrada_semicirculo/(3*math.pi)
     return cy_semicir
 
-def c_cuartodecirculo (r): #Se crea una funcion para calcular el centroide de la figura
-    cx_cuarcir=4*r/(3*math.pi) #Se calculan los centroides para el eje x y y
-    cy_cuarcir=4*r/(3*math.pi)
+def cx_cuartodecirculo (entrada_cuartocirculo): #Se crea una funcion para calcular el centroide de la figura
+    cx_cuarcir=4*entrada_cuartocirculo/(3*math.pi) #Se calculan los centroides para el eje x y y
+    return cx_cuarcir
+
+def cy_cuartodecirculo (entrada_cuartocirculo):
+    cy_cuarcir=4*entrada_cuartocirculo/(3*math.pi)
+    return cy_cuarcir
    
 def c_sectorcircular (r,an): #Se crea una funcion para calcular el centroide de la figura
     cx_seccir=(2*r*(math.sin(an/2)))/((3/2)*an) #Se calculan los centroides para el eje x y y

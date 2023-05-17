@@ -22,6 +22,7 @@ from fronted.abajo.abajo import abajo
 from fronted.abajo.calculosRec import abajo_Rec
 from fronted.abajo.calculosCir import abajo_Cir
 from fronted.abajo.calculosSemicir import abajo_Semicir
+from fronted.abajo.calculosCuartocir import abajo_Cuartocir
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],suppress_callback_exceptions=True)
 
 
@@ -265,6 +266,17 @@ def a_semicirculoDash(entrada_semicirculo):
     area_semicir = a_semicirculo(entrada_semicirculo)
     return "{:.2f} m\xb2".format(area_semicir)
 
+@app.callback(
+    Output('salida_a_cuartocirculo', 'children'),
+    [Input('entrada_cuartocirculo', 'value'),
+    ]
+)
+
+def a_cuartodecirculoDash(entrada_cuartocirculo):
+    area_cuarcir = a_cuartodecirculo(entrada_cuartocirculo)
+    return "{:.2f} m\xb2".format(area_cuarcir)
+
+
 # Para el funcionamiento de los centroides 
 @app.callback(
     Output('salida_cx_rec', 'children'),
@@ -302,6 +314,19 @@ def cx_semicirculoDash(entrada_semicirculo):
     return "{:.2f} m".format(cx_semicir)
 
 @app.callback(
+    Output('salida_cx_cuarcir', 'children'),
+    [Input('entrada_cuartocirculo', 'value'),
+     ]
+)
+def cx_cuartocirculoDash(entrada_cuartocirculo):
+
+    cx_cuarcir = cx_cuartodecirculo(entrada_cuartocirculo)
+
+    return "{:.2f} m".format(cx_cuarcir)
+
+#Para el funcionamiento de cy
+
+@app.callback(
     Output('salida_cy_rec', 'children'),
     [Input('entrada_base_rec', 'value'),
      Input('entrada_altura_rec', 'value')]
@@ -335,7 +360,19 @@ def cy_semicirculoDash(entrada_semicirculo):
     cy_semicir = cy_semicirculo(entrada_semicirculo)
 
     return "{:.2f} m".format(cy_semicir)
-# Para el funcionamiento de las inercias del rectangulo y la grafica
+
+@app.callback(
+    Output('salida_cy_cuarcir', 'children'),
+    [Input('entrada_cuartocirculo', 'value'),
+     ]
+)
+def cy_cuartocirculoDash(entrada_cuartocirculo):
+
+    cy_cuarcir = cy_cuartodecirculo(entrada_cuartocirculo)
+
+    return "{:.2f} m".format(cy_cuarcir)
+
+# Para el funcionamiento de las inercias x
 @app.callback(
     Output('salida_ix_rec', 'children'),
     [Input('entrada_base_rec', 'value'),
@@ -370,6 +407,18 @@ def ix_semicirculoDash(entrada_semicirculo):
     return "{:.2f} m⁴".format(ix_semicir)
 
 @app.callback(
+    Output('salida_ix_cuarcir', 'children'),
+    [Input('entrada_cuartocirculo', 'value'),
+     ]
+)
+def ix_cuartocirculoDash(entrada_cuartocirculo):
+
+    ix_cuarcir = ix_cuartodecirculo(entrada_cuartocirculo)
+
+    return "{:.2f} m⁴".format(ix_cuarcir)
+
+#Para el funcionamiento de las inercias y
+@app.callback(
     Output('salida_iy_rec', 'children'),
     [Input('entrada_base_rec', 'value'),
      Input('entrada_altura_rec', 'value')]
@@ -401,6 +450,19 @@ def iy_semicirculoDash(entrada_semicirculo):
     iy_semicir = iy_semicirculo(entrada_semicirculo)
 
     return "{:.2f} m⁴".format(iy_semicir)
+
+@app.callback(
+    Output('salida_iy_cuarcir', 'children'),
+    [Input('entrada_cuartocirculo', 'value'),
+     ]
+)
+def iy_cuartocirculoDash(entrada_cuartocirculo):
+
+    iy_cuarcir = iy_cuartodecirculo(entrada_cuartocirculo)
+
+    return "{:.2f} m⁴".format(iy_cuarcir)
+
+#Para el funcionamiento de j 
 
 @app.callback(
     Output('salida_j_rec', 'children'),
@@ -436,6 +498,18 @@ def j_semicirculoDash(entrada_semicirculo):
     return "{:.2f} m⁴".format(j_semicir)
 
 @app.callback(
+    Output('salida_j_cuarcir', 'children'),
+    [Input('entrada_cuartocirculo', 'value'),
+     ]
+)
+def j_cuartocirculoDash(entrada_cuartocirculo):
+
+    j_cuarcir = j_cuartodecirculo(entrada_cuartocirculo)
+
+    return "{:.2f} m⁴".format(j_cuarcir)
+
+#Para el funcionamiento de las graficas
+@app.callback(
     Output('salida_grafica_rec', 'children'),
     [Input('entrada_base_rec', 'value'),
      Input('entrada_altura_rec', 'value')]
@@ -470,6 +544,19 @@ def grafica_semicirculoDash(entrada_semicirculo):
 
     image_element = html.Img(src="data:image/png;base64,{}".format(encoded_image))
     return html.Div([image_element])
+
+@app.callback(
+    Output('salida_grafica_cuarcir', 'children'),
+    [Input('entrada_cuartocirculo', 'value'),
+     ]
+)
+def grafica_cuartocirculoDash(entrada_cuartocirculo):
+
+    encoded_image= graficar_cuarto_circulo(entrada_cuartocirculo)
+
+    image_element = html.Img(src="data:image/png;base64,{}".format(encoded_image))
+    return html.Div([image_element])
+
 #para el botón calcular
 
 @app.callback(
@@ -495,7 +582,7 @@ def mostrar_calculos(n_clicks_calcular, n_clicks_rectangulo, n_clicks_circulo, n
         elif n_clicks_semicirculo and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_cuarto and not n_clicks_arco and not n_clicks_triangulo:
             return abajo_Semicir  # Resultado para el semicírculo
         elif n_clicks_cuarto and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_arco and not n_clicks_triangulo:
-            return 'mora'  # Resultado para el semicírculo
+            return abajo_Cuartocir  # Resultado para el semicírculo
         elif n_clicks_arco and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_cuarto and not n_clicks_triangulo:
             return 'fresa'  # Resultado para el semicírcul       
         elif n_clicks_triangulo and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_cuarto and not n_clicks_arco:

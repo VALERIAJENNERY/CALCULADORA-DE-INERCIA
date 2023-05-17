@@ -3,6 +3,7 @@ import dash_bootstrap_components as dbc #importar los componentes del Bootstrap
 from fronted.datos.datos_rec import *
 from fronted.datos.datos_cir import *
 from fronted.datos.datos_semicir import *
+from fronted.datos.datos_cuartocir import *
 # Se crea una lista de propiedades para rectangulo
 
 row1_rec = html.Tr([html.Td("Inercía (Iy)"), html.Td(iy_rectangulo)])
@@ -53,6 +54,25 @@ row6_semicir = html.Tr([html.Td("Constante Torsional (J)"), html.Td(j_semicircul
 table_body_semicir = [html.Tbody([row1_semicir, row2_semicir, row3_semicir, row4_semicir,row5_semicir,row6_semicir])]
 
 table_semicir = dbc.Table( table_body_semicir, bordered=True,
+    style={'background-color': 'white', 
+                               "font-family": "Arial Narrow", 
+                               "color": "purple", 
+                               "font-weight": "bold", 
+                               "text-align": "center",
+                               'border': '0.5px solid purple'}
+)
+
+#se crea una lista de propiedades para el cuarto de circulo
+row1_cuarcir = html.Tr([html.Td("Inercía (Iy)"), html.Td(iy_cuartocirculo)])
+row2_cuarcir = html.Tr([html.Td("Inercía (Ix)"), html.Td(ix_cuartocirculo)])
+row3_cuarcir = html.Tr([html.Td("Área (A)"), html.Td(area_cuartocirculo)])
+row4_cuarcir = html.Tr([html.Td("Centroide x (Cx)"), html.Td(cx_cuartocirculo)])
+row5_cuarcir = html.Tr([html.Td("Centroide y (Cy)"), html.Td(cy_cuartocirculo)])
+row6_cuarcir = html.Tr([html.Td("Constante Torsional (J)"), html.Td(j_cuartocirculo)])
+
+table_body_cuartocir = [html.Tbody([row1_cuarcir, row2_cuarcir, row3_cuarcir, row4_cuarcir,row5_cuarcir,row6_cuarcir])]
+
+table_cuartocir = dbc.Table( table_body_cuartocir, bordered=True,
     style={'background-color': 'white', 
                                "font-family": "Arial Narrow", 
                                "color": "purple", 
