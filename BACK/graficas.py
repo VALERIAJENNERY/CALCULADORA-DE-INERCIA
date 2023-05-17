@@ -143,16 +143,16 @@ def graficar_cuarto_circulo(entrada_cuartocirculo):
 
 
 
-def graficar_sector(r, angulo):
+def graficar_sector(entrada_radio_sector,entrada_angulo_sector):
     # Verificar que el radio esté en el rango correcto
-    if r <= 0:
+    if entrada_radio_sector <= 0:
         raise ValueError("El radio 'r' debe ser mayor que cero.")
     
     # Asegurarse de que el ángulo está en el rango correcto
-    angulo = angulo % 360
+    entrada_angulo_sector = entrada_angulo_sector % 360
     
     # Crear la lista de valores para el sector
-    valores = [angulo, 360 - angulo]
+    valores = [entrada_angulo_sector, 360 - entrada_angulo_sector]
     
     # Crear la lista de etiquetas
     etiquetas = ['Área del sector', '']
@@ -164,16 +164,23 @@ def graficar_sector(r, angulo):
     fig, ax = plt.subplots()
 
     # Graficar el sector en los ejes
-    ax.pie(valores, labels=etiquetas, colors=colores, radius=r, startangle=90-angulo/2, counterclock=False)
+    ax.pie(valores, labels=etiquetas, colors=colores, radius=entrada_radio_sector, startangle=90-entrada_angulo_sector/2, counterclock=False)
 
     # Establecer el título del gráfico
-    ax.set_title('Sector Circular de Radio {} y Ángulo {}'.format(r, angulo))
+    ax.set_title('Sector Circular de Radio {} y Ángulo {}'.format(entrada_radio_sector, entrada_angulo_sector))
 
     # Establecer el aspecto de los ejes para que parezcan un círculo
     ax.axis('equal')
+    # Guardar la figura en un objeto BytesIO
+    fig_buffer = io.BytesIO()
+    plt.savefig(fig_buffer, format='png')
+    plt.close()
 
-    # Mostrar el gráfico
-    plt.show()
+    fig_buffer.seek(0)
+
+    encoded_image = base64.b64encode(fig_buffer.getvalue()).decode()
+    # Crear la figura HTML con Dash
+    return encoded_image
 
 
 def graficar_triangulo(b, h, a):

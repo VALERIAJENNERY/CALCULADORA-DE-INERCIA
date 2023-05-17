@@ -5,7 +5,7 @@ from fronted.abajo.tablas import *
 
 # Se crea una variable que contenga: 
 
-abajo_Cuartocir = dbc.Container(
+abajo_Seccir = dbc.Container(
     [
         dbc.Row( # Una fila 
             [ 
@@ -24,7 +24,7 @@ abajo_Cuartocir = dbc.Container(
                                 ), 
                                 dbc.Row(
                                     [
-                                        dbc.Col(id="salida_grafica_cuarcir", style={'text-align': 'center'}) # Se crea una columna con el titulo.
+                                        dbc.Col(id="salida_grafica_seccir", style={'text-align': 'center'}) # Se crea una columna con el titulo.
                                     ],
                                 ), 
                         ])), # Una columna con el nombre grafica 

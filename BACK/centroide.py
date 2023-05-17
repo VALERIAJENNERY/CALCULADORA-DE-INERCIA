@@ -34,10 +34,14 @@ def cy_cuartodecirculo (entrada_cuartocirculo):
     cy_cuarcir=4*entrada_cuartocirculo/(3*math.pi)
     return cy_cuarcir
    
-def c_sectorcircular (r,an): #Se crea una funcion para calcular el centroide de la figura
-    cx_seccir=(2*r*(math.sin(an/2)))/((3/2)*an) #Se calculan los centroides para el eje x y y
+def cx_sectorcircular (entrada_radio_sector,entrada_angulo_sector): #Se crea una funcion para calcular el centroide de la figura
+    cx_seccir=(2*entrada_radio_sector*(math.sin(entrada_angulo_sector/2)))/((3/2)*entrada_angulo_sector) #Se calculan los centroides para el eje x y y
+    return cx_seccir
+
+def cy_sectorcircular (entrada_radio_sector,entrada_angulo_sector): 
     cy_seccir=0
-    
+    return cy_seccir
+
 def c_triangulo (b,h,a): #Se crea una funcion para calcular el centroide de la figura
     cx_tri=(a+b)/2 #Se calculan los centroides para el eje x y y
     cy_tri=h/3

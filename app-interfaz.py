@@ -23,6 +23,7 @@ from fronted.abajo.calculosRec import abajo_Rec
 from fronted.abajo.calculosCir import abajo_Cir
 from fronted.abajo.calculosSemicir import abajo_Semicir
 from fronted.abajo.calculosCuartocir import abajo_Cuartocir
+from fronted.abajo.calculosSeccir import abajo_Seccir
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],suppress_callback_exceptions=True)
 
 
@@ -276,6 +277,16 @@ def a_cuartodecirculoDash(entrada_cuartocirculo):
     area_cuarcir = a_cuartodecirculo(entrada_cuartocirculo)
     return "{:.2f} m\xb2".format(area_cuarcir)
 
+@app.callback(
+    Output('salida_a_sectorcirculo', 'children'),
+    [Input('entrada_radio_sector', 'value'),
+     Input('entrada_angulo_sector', 'value')
+    ]
+)
+
+def a_sectorcircularDash(entrada_radio_sector,entrada_angulo_sector):
+    area_seccir = a_sectorcircular(entrada_radio_sector,entrada_angulo_sector)
+    return "{:.2f} m\xb2".format(area_seccir)
 
 # Para el funcionamiento de los centroides 
 @app.callback(
@@ -323,6 +334,18 @@ def cx_cuartocirculoDash(entrada_cuartocirculo):
     cx_cuarcir = cx_cuartodecirculo(entrada_cuartocirculo)
 
     return "{:.2f} m".format(cx_cuarcir)
+
+@app.callback(
+    Output('salida_cx_seccir', 'children'),
+    [Input('entrada_radio_sector', 'value'),
+     Input('entrada_angulo_sector', 'value')
+     ]
+)
+def cx_sectorcircularDash(entrada_radio_sector,entrada_angulo_sector):
+
+    cx_seccir = cx_sectorcircular(entrada_radio_sector,entrada_angulo_sector)
+
+    return "{:.2f} m".format(cx_seccir)
 
 #Para el funcionamiento de cy
 
@@ -372,6 +395,18 @@ def cy_cuartocirculoDash(entrada_cuartocirculo):
 
     return "{:.2f} m".format(cy_cuarcir)
 
+@app.callback(
+    Output('salida_cy_seccir', 'children'),
+    [Input('entrada_radio_sector', 'value'),
+     Input('entrada_angulo_sector', 'value')
+     ]
+)
+def cy_sectorcircularDash(entrada_radio_sector,entrada_angulo_sector):
+
+    cy_seccir = cy_sectorcircular(entrada_radio_sector,entrada_angulo_sector)
+
+    return "{:.2f} m".format(cy_seccir)
+
 # Para el funcionamiento de las inercias x
 @app.callback(
     Output('salida_ix_rec', 'children'),
@@ -416,6 +451,18 @@ def ix_cuartocirculoDash(entrada_cuartocirculo):
     ix_cuarcir = ix_cuartodecirculo(entrada_cuartocirculo)
 
     return "{:.2f} m⁴".format(ix_cuarcir)
+
+@app.callback(
+    Output('salida_ix_seccir', 'children'),
+    [Input('entrada_radio_sector', 'value'),
+     Input('entrada_angulo_sector', 'value')
+     ]
+)
+def ix_sectorcircularDash(entrada_radio_sector,entrada_angulo_sector):
+
+    ix_seccir = ix_sectorcircular(entrada_radio_sector,entrada_angulo_sector)
+
+    return "{:.2f} m".format(ix_seccir)
 
 #Para el funcionamiento de las inercias y
 @app.callback(
@@ -462,6 +509,18 @@ def iy_cuartocirculoDash(entrada_cuartocirculo):
 
     return "{:.2f} m⁴".format(iy_cuarcir)
 
+@app.callback(
+    Output('salida_iy_seccir', 'children'),
+    [Input('entrada_radio_sector', 'value'),
+     Input('entrada_angulo_sector', 'value')
+     ]
+)
+def iy_sectorcircularDash(entrada_radio_sector,entrada_angulo_sector):
+
+    iy_seccir = iy_sectorcircular(entrada_radio_sector,entrada_angulo_sector)
+
+    return "{:.2f} m".format(iy_seccir)
+
 #Para el funcionamiento de j 
 
 @app.callback(
@@ -507,6 +566,18 @@ def j_cuartocirculoDash(entrada_cuartocirculo):
     j_cuarcir = j_cuartodecirculo(entrada_cuartocirculo)
 
     return "{:.2f} m⁴".format(j_cuarcir)
+
+@app.callback(
+    Output('salida_j_seccir', 'children'),
+    [Input('entrada_radio_sector', 'value'),
+     Input('entrada_angulo_sector', 'value')
+     ]
+)
+def j_sectorcircularDash(entrada_radio_sector,entrada_angulo_sector):
+
+    j_seccir = j_sectorcircular(entrada_radio_sector,entrada_angulo_sector)
+
+    return "{:.2f} m".format(j_seccir)
 
 #Para el funcionamiento de las graficas
 @app.callback(
@@ -557,6 +628,19 @@ def grafica_cuartocirculoDash(entrada_cuartocirculo):
     image_element = html.Img(src="data:image/png;base64,{}".format(encoded_image))
     return html.Div([image_element])
 
+@app.callback(
+    Output('salida_grafica_seccir', 'children'),
+    [Input('entrada_radio_sector', 'value'),
+     Input('entrada_angulo_sector', 'value')
+     ]
+)
+def graficar_sectorDash(entrada_radio_sector,entrada_angulo_sector):
+
+    encoded_image= graficar_sector(entrada_radio_sector,entrada_angulo_sector)
+
+    image_element = html.Img(src="data:image/png;base64,{}".format(encoded_image))
+    return html.Div([image_element])
+
 #para el botón calcular
 
 @app.callback(
@@ -584,7 +668,7 @@ def mostrar_calculos(n_clicks_calcular, n_clicks_rectangulo, n_clicks_circulo, n
         elif n_clicks_cuarto and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_arco and not n_clicks_triangulo:
             return abajo_Cuartocir  # Resultado para el semicírculo
         elif n_clicks_arco and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_cuarto and not n_clicks_triangulo:
-            return 'fresa'  # Resultado para el semicírcul       
+            return abajo_Seccir  # Resultado para el semicírcul       
         elif n_clicks_triangulo and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_cuarto and not n_clicks_arco:
             return 'mango'  # Resultado para el semicírcul       
         else:

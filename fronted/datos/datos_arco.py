@@ -22,8 +22,14 @@ radio_arco = dbc.Row(
             ]
         ),
         
-        html.Label(id='salida_arco')
+
     ]
 )
 
 datos_arco = html.Div(id="resultado_arco",children=[],)
+area_seccirculo=html.Div(html.Label(id='salida_a_sectorcirculo'))
+cx_seccirculo=html.Div(html.Label(id='salida_cx_seccir'))
+cy_seccirculo=html.Div(html.Label(id='salida_cy_seccir'))
+ix_seccirculo=html.Div(html.Label(id='salida_ix_seccir'))
+iy_seccirculo=html.Div(html.Label(id='salida_iy_seccir'))
+j_seccirculo=html.Div(html.Label(id='salida_j_seccir'))
