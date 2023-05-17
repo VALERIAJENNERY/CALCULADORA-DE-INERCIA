@@ -42,7 +42,10 @@ def cy_sectorcircular (entrada_radio_sector,entrada_angulo_sector):
     cy_seccir=0
     return cy_seccir
 
-def c_triangulo (b,h,a): #Se crea una funcion para calcular el centroide de la figura
-    cx_tri=(a+b)/2 #Se calculan los centroides para el eje x y y
-    cy_tri=h/3
-   
+def cx_triangulo (entrada_base_trian,entrada_altura_trian,entrada_a_trian): #Se crea una funcion para calcular el centroide de la figura
+    cx_tri=(entrada_a_trian+entrada_base_trian)/2 #Se calculan los centroides para el eje x y y
+    return cx_tri
+
+def cy_triangulo (entrada_base_trian,entrada_altura_trian,entrada_a_trian):
+    cy_tri=entrada_altura_trian/3
+    return cy_tri

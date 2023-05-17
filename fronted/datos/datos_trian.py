@@ -28,8 +28,14 @@ altura_trian = dbc.Row(
                 html.Hr(style={'display': 'none'})
             ]
         ),        
-        html.Label(id='salida_altura_trian')
+
     ]
 )
 
 datos_trian = html.Div(id="resultado_triangulo",children=[],)
+area_tri=html.Div(html.Label(id='salida_a_tri'))
+cx_tri=html.Div(html.Label(id='salida_cx_tri'))
+cy_tri=html.Div(html.Label(id='salida_cy_tri'))
+ix_tri=html.Div(html.Label(id='salida_ix_tri'))
+iy_tri=html.Div(html.Label(id='salida_iy_tri'))
+j_tri=html.Div(html.Label(id='salida_j_tri'))

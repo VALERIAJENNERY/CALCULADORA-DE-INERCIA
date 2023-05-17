@@ -24,6 +24,7 @@ from fronted.abajo.calculosCir import abajo_Cir
 from fronted.abajo.calculosSemicir import abajo_Semicir
 from fronted.abajo.calculosCuartocir import abajo_Cuartocir
 from fronted.abajo.calculosSeccir import abajo_Seccir
+from fronted.abajo.calculosTri import abajo_tri
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],suppress_callback_exceptions=True)
 
 
@@ -288,6 +289,19 @@ def a_sectorcircularDash(entrada_radio_sector,entrada_angulo_sector):
     area_seccir = a_sectorcircular(entrada_radio_sector,entrada_angulo_sector)
     return "{:.2f} m\xb2".format(area_seccir)
 
+@app.callback(
+    Output('salida_a_tri', 'children'),
+    [Input('entrada_base_trian', 'value'),
+     Input('entrada_altura_trian', 'value'),
+     Input('entrada_a_trian', 'value')
+    ]
+)
+
+def a_trianguloDash(entrada_base_trian,entrada_altura_trian,entrada_a_trian):
+    area_tri = a_triangulo(entrada_base_trian,entrada_altura_trian,entrada_a_trian)
+    return "{:.2f} m\xb2".format(area_tri)
+
+
 # Para el funcionamiento de los centroides 
 @app.callback(
     Output('salida_cx_rec', 'children'),
@@ -346,6 +360,18 @@ def cx_sectorcircularDash(entrada_radio_sector,entrada_angulo_sector):
     cx_seccir = cx_sectorcircular(entrada_radio_sector,entrada_angulo_sector)
 
     return "{:.2f} m".format(cx_seccir)
+
+@app.callback(
+    Output('salida_cx_tri', 'children'),
+    [Input('entrada_base_trian', 'value'),
+     Input('entrada_altura_trian', 'value'),
+     Input('entrada_a_trian', 'value')
+    ]
+)
+
+def cx_trianguloDash(entrada_base_trian,entrada_altura_trian,entrada_a_trian):
+    cx_tri = cx_triangulo(entrada_base_trian,entrada_altura_trian,entrada_a_trian)
+    return "{:.2f} m\xb2".format(cx_tri)
 
 #Para el funcionamiento de cy
 
@@ -407,6 +433,18 @@ def cy_sectorcircularDash(entrada_radio_sector,entrada_angulo_sector):
 
     return "{:.2f} m".format(cy_seccir)
 
+@app.callback(
+    Output('salida_cy_tri', 'children'),
+    [Input('entrada_base_trian', 'value'),
+     Input('entrada_altura_trian', 'value'),
+     Input('entrada_a_trian', 'value')
+    ]
+)
+
+def cy_trianguloDash(entrada_base_trian,entrada_altura_trian,entrada_a_trian):
+    cy_tri = cy_triangulo(entrada_base_trian,entrada_altura_trian,entrada_a_trian)
+    return "{:.2f} m\xb2".format(cy_tri)
+
 # Para el funcionamiento de las inercias x
 @app.callback(
     Output('salida_ix_rec', 'children'),
@@ -464,6 +502,17 @@ def ix_sectorcircularDash(entrada_radio_sector,entrada_angulo_sector):
 
     return "{:.2f} m".format(ix_seccir)
 
+@app.callback(
+    Output('salida_ix_tri', 'children'),
+    [Input('entrada_base_trian', 'value'),
+     Input('entrada_altura_trian', 'value'),
+     Input('entrada_a_trian', 'value')
+    ]
+)
+
+def ix_trianguloDash(entrada_base_trian,entrada_altura_trian,entrada_a_trian):
+    ix_tri = ix_triangulo(entrada_base_trian,entrada_altura_trian,entrada_a_trian)
+    return "{:.2f} m\xb2".format(ix_tri)
 #Para el funcionamiento de las inercias y
 @app.callback(
     Output('salida_iy_rec', 'children'),
@@ -520,6 +569,18 @@ def iy_sectorcircularDash(entrada_radio_sector,entrada_angulo_sector):
     iy_seccir = iy_sectorcircular(entrada_radio_sector,entrada_angulo_sector)
 
     return "{:.2f} m".format(iy_seccir)
+
+@app.callback(
+    Output('salida_iy_tri', 'children'),
+    [Input('entrada_base_trian', 'value'),
+     Input('entrada_altura_trian', 'value'),
+     Input('entrada_a_trian', 'value')
+    ]
+)
+
+def iy_trianguloDash(entrada_base_trian,entrada_altura_trian,entrada_a_trian):
+    iy_tri = iy_triangulo(entrada_base_trian,entrada_altura_trian,entrada_a_trian)
+    return "{:.2f} m\xb2".format(iy_tri)
 
 #Para el funcionamiento de j 
 
@@ -578,6 +639,18 @@ def j_sectorcircularDash(entrada_radio_sector,entrada_angulo_sector):
     j_seccir = j_sectorcircular(entrada_radio_sector,entrada_angulo_sector)
 
     return "{:.2f} m".format(j_seccir)
+
+@app.callback(
+    Output('salida_j_tri', 'children'),
+    [Input('entrada_base_trian', 'value'),
+     Input('entrada_altura_trian', 'value'),
+     Input('entrada_a_trian', 'value')
+    ]
+)
+
+def j_trianguloDash(entrada_base_trian,entrada_altura_trian,entrada_a_trian):
+    j_tri = j_triangulo(entrada_base_trian,entrada_altura_trian,entrada_a_trian)
+    return "{:.2f} m\xb2".format(j_tri)
 
 #Para el funcionamiento de las graficas
 @app.callback(
@@ -641,6 +714,20 @@ def graficar_sectorDash(entrada_radio_sector,entrada_angulo_sector):
     image_element = html.Img(src="data:image/png;base64,{}".format(encoded_image))
     return html.Div([image_element])
 
+@app.callback(
+    Output('salida_grafica_tri', 'children'),
+    [Input('entrada_base_trian', 'value'),
+     Input('entrada_altura_trian', 'value'),
+     Input('entrada_a_trian', 'value')
+    ]
+)
+def graficar_trianguloDash(entrada_base_trian,entrada_altura_trian,entrada_a_trian):
+
+    encoded_image= graficar_triangulo(entrada_base_trian,entrada_altura_trian,entrada_a_trian)
+
+    image_element = html.Img(src="data:image/png;base64,{}".format(encoded_image))
+    return html.Div([image_element])
+
 #para el botón calcular
 
 @app.callback(
@@ -670,7 +757,7 @@ def mostrar_calculos(n_clicks_calcular, n_clicks_rectangulo, n_clicks_circulo, n
         elif n_clicks_arco and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_cuarto and not n_clicks_triangulo:
             return abajo_Seccir  # Resultado para el semicírcul       
         elif n_clicks_triangulo and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_cuarto and not n_clicks_arco:
-            return 'mango'  # Resultado para el semicírcul       
+            return abajo_tri  # Resultado para el semicírcul       
         else:
             return ''
 

@@ -24,6 +24,6 @@ def a_sectorcircular (entrada_radio_sector,entrada_angulo_sector): #Se crea una 
     return area_seccir
 
 
-def a_triangulo (entrada_base_trian,entrada_altura_trian): #Se crea una funcion para calcular el area de la figura
+def a_triangulo (entrada_base_trian,entrada_altura_trian,entrada_a_trian): #Se crea una funcion para calcular el area de la figura
     area_tri=(entrada_base_trian*entrada_altura_trian)/2 #Se calcula el área
-    print("El área del triángulo es: ", area_tri, "m\xb2") #Se imprime el resultado
+    return area_tri

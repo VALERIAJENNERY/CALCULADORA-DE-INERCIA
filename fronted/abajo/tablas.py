@@ -5,6 +5,7 @@ from fronted.datos.datos_cir import *
 from fronted.datos.datos_semicir import *
 from fronted.datos.datos_cuartocir import *
 from fronted.datos.datos_arco import *
+from fronted.datos.datos_trian import *
 # Se crea una lista de propiedades para rectangulo
 
 row1_rec = html.Tr([html.Td("Inercía (Iy)"), html.Td(iy_rectangulo)])
@@ -93,6 +94,25 @@ row6_seccir = html.Tr([html.Td("Constante Torsional (J)"), html.Td(j_seccirculo)
 table_body_seccir = [html.Tbody([row1_seccir, row2_seccir, row3_seccir, row4_seccir,row5_seccir,row6_seccir])]
 
 table_seccir = dbc.Table( table_body_seccir, bordered=True,
+    style={'background-color': 'white', 
+                               "font-family": "Arial Narrow", 
+                               "color": "purple", 
+                               "font-weight": "bold", 
+                               "text-align": "center",
+                               'border': '0.5px solid purple'}
+)
+
+#se crea una lista de propiedades para el cuarto de circulo
+row1_tri = html.Tr([html.Td("Inercía (Iy)"), html.Td(iy_tri)])
+row2_tri = html.Tr([html.Td("Inercía (Ix)"), html.Td(ix_tri)])
+row3_tri = html.Tr([html.Td("Área (A)"), html.Td(area_tri)])
+row4_tri = html.Tr([html.Td("Centroide x (Cx)"), html.Td(cx_tri)])
+row5_tri = html.Tr([html.Td("Centroide y (Cy)"), html.Td(cy_tri)])
+row6_tri = html.Tr([html.Td("Constante Torsional (J)"), html.Td(j_tri)])
+
+table_body_tri = [html.Tbody([row1_tri, row2_tri, row3_tri, row4_tri,row5_tri,row6_tri])]
+
+table_tri = dbc.Table( table_body_tri, bordered=True,
     style={'background-color': 'white', 
                                "font-family": "Arial Narrow", 
                                "color": "purple", 

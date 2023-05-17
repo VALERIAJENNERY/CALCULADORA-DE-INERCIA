@@ -183,16 +183,16 @@ def graficar_sector(entrada_radio_sector,entrada_angulo_sector):
     return encoded_image
 
 
-def graficar_triangulo(b, h, a):
+def graficar_triangulo(entrada_base_trian,entrada_altura_trian,entrada_a_trian):
     # Verificar que la base, altura y a estén en el rango correcto
-    if b <= 0 or h <= 0 or a < 0 or a > b:
+    if entrada_base_trian <= 0 or entrada_altura_trian <= 0 or entrada_a_trian < 0 or entrada_a_trian > entrada_base_trian:
         raise ValueError("La base y la altura deben ser mayores que cero y a debe estar en el rango [0, b].")
     
     # Calcular la coordenada x del vértice superior del triángulo
-    x_top = a
+    x_top = entrada_a_trian
     # Calcular las coordenadas de los vértices del triángulo
-    x = [0, b, x_top]
-    y = [0, 0, h]
+    x = [0, entrada_base_trian, x_top]
+    y = [0, 0, entrada_altura_trian]
 
     # Crear una figura y objeto de ejes
     fig, ax = plt.subplots()
@@ -201,21 +201,29 @@ def graficar_triangulo(b, h, a):
     ax.fill(x, y, color='grey')
 
     # Agregar línea horizontal para la distancia a
-    ax.hlines(h, 0, a, color='r', linestyle='--')
+    ax.hlines(entrada_altura_trian, 0, entrada_a_trian, color='r', linestyle='--')
 
     # Agregar etiqueta para la distancia a
-    ax.text(a/2, h+0.05*h, 'a = {}'.format(a), fontsize=12, ha='center', va='bottom')
+    ax.text(entrada_a_trian/2, entrada_altura_trian+0.05*entrada_altura_trian, 'a = {}'.format(entrada_a_trian), fontsize=12, ha='center', va='bottom')
 
     # Establecer el título del gráfico
-    ax.set_title('Triángulo de Base {}, Altura {} y a = {}'.format(b, h, a))
+    ax.set_title('Triángulo de Base {}, Altura {} y a = {}'.format(entrada_base_trian, entrada_altura_trian, entrada_a_trian))
 
     # Establecer los límites de los ejes
-    ax.set_xlim(left=-0.1*b, right=1.1*b)
-    ax.set_ylim(bottom=-0.1*h, top=1.1*h)
+    ax.set_xlim(left=-0.1*entrada_base_trian, right=1.1*entrada_base_trian)
+    ax.set_ylim(bottom=-0.1*entrada_altura_trian, top=1.1*entrada_altura_trian)
 
     # Etiquetar los ejes
     ax.set_xlabel('Base')
     ax.set_ylabel('Altura')
 
-    # Mostrar el gráfico
-    plt.show()
+    # Guardar la figura en un objeto BytesIO
+    fig_buffer = io.BytesIO()
+    plt.savefig(fig_buffer, format='png')
+    plt.close()
+
+    fig_buffer.seek(0)
+
+    encoded_image = base64.b64encode(fig_buffer.getvalue()).decode()
+    # Crear la figura HTML con Dash
+    return encoded_image
