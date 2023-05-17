@@ -20,6 +20,7 @@ from fronted.datos.datos_arco import radio_arco,datos_arco
 from fronted.datos.datos_trian import altura_trian,datos_trian
 from fronted.abajo.abajo import abajo
 from fronted.abajo.calculosRec import abajo_Rec
+from fronted.abajo.calculosCir import abajo_Cir
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],suppress_callback_exceptions=True)
 
@@ -231,7 +232,7 @@ def datos_rec(n_clicks, children):
     else:
         return html.Div(id='resultado_triangulo', children=[])
     
-# para el funcionamiento del area del rectangulo
+# Para el funcionamiento de las areas
 @app.callback(
     Output('salida_altura_rec', 'children'),
     [Input('entrada_base_rec', 'value'),
@@ -244,8 +245,17 @@ def a_rectanguloDash(entrada_base_rec,entrada_altura_rec):
     area_rec = a_rectangulo(entrada_base_rec,entrada_altura_rec)
     return "{:.2f} m\xb2".format(area_rec)
   
+@app.callback(
+    Output('salida_a_circulo', 'children'),
+    [Input('entrada_circulo', 'value'),
+    ]
+)
 
-# Para el funcionmiento de los centroides
+def a_circuloDash(entrada_circulo):
+    area_cir = a_circulo(entrada_circulo)
+    return "{:.2f} m\xb2".format(area_cir)
+
+# Para el funcionamiento de los centroides 
 @app.callback(
     Output('salida_cx_rec', 'children'),
     [Input('entrada_base_rec', 'value'),
@@ -260,6 +270,19 @@ def cx_rectanguloDash(entrada_base_rec,entrada_altura_rec):
     return "{:.2f} m".format(cx_rec)
 
 @app.callback(
+    Output('salida_cx_cir', 'children'),
+    [Input('entrada_circulo', 'value'),
+     ]
+)
+
+
+def cx_circuloDash(entrada_circulo):
+
+    cx_cir = cx_circulo(entrada_circulo)
+
+    return "{:.2f} m".format(cx_cir)
+
+@app.callback(
     Output('salida_cy_rec', 'children'),
     [Input('entrada_base_rec', 'value'),
      Input('entrada_altura_rec', 'value')]
@@ -269,6 +292,20 @@ def cy_rectanguloDash(entrada_base_rec,entrada_altura_rec):
     cy_rec = cy_rectangulo(entrada_base_rec,entrada_altura_rec)
 
     return "{:.2f} m".format(cy_rec)
+
+@app.callback(
+    Output('salida_cy_cir', 'children'),
+    [Input('entrada_circulo', 'value'),
+     ]
+)
+
+
+def cy_circuloDash(entrada_circulo):
+
+    cy_cir = cy_circulo(entrada_circulo)
+
+    return "{:.2f} m".format(cy_cir)
+# Para el funcionamiento de las inercias del rectangulo y la grafica
 @app.callback(
     Output('salida_ix_rec', 'children'),
     [Input('entrada_base_rec', 'value'),
@@ -281,15 +318,38 @@ def ix_rectanguloDash(entrada_base_rec,entrada_altura_rec):
     return "{:.2f} m⁴".format(ix_rec)
 
 @app.callback(
+    Output('salida_ix_cir', 'children'),
+    [Input('entrada_circulo', 'value'),
+     ]
+)
+def ix_circuloDash(entrada_circulo):
+
+    ix_cir = ix_circulo(entrada_circulo)
+
+    return "{:.2f} m⁴".format(ix_cir)
+
+@app.callback(
     Output('salida_iy_rec', 'children'),
     [Input('entrada_base_rec', 'value'),
      Input('entrada_altura_rec', 'value')]
 )
-def ix_rectanguloDash(entrada_base_rec,entrada_altura_rec):
+def iy_rectanguloDash(entrada_base_rec,entrada_altura_rec):
 
     iy_rec = iy_rectangulo(entrada_base_rec,entrada_altura_rec)
 
     return "{:.2f} m⁴".format(iy_rec)
+
+@app.callback(
+    Output('salida_iy_cir', 'children'),
+    [Input('entrada_circulo', 'value'),
+     ]
+)
+def iy_circuloDash(entrada_circulo):
+
+    iy_cir = iy_circulo(entrada_circulo)
+
+    return "{:.2f} m⁴".format(iy_cir)
+
 @app.callback(
     Output('salida_j_rec', 'children'),
     [Input('entrada_base_rec', 'value'),
@@ -300,6 +360,17 @@ def j_rectanguloDash(entrada_base_rec,entrada_altura_rec):
     j_rec = j_rectangulo(entrada_base_rec,entrada_altura_rec)
 
     return "{:.2f} m⁴".format(j_rec)
+
+@app.callback(
+    Output('salida_j_cir', 'children'),
+    [Input('entrada_circulo', 'value'),
+     ]
+)
+def j_circuloDash(entrada_circulo):
+
+    j_cir = j_circulo(entrada_circulo)
+
+    return "{:.2f} m⁴".format(j_cir)
 
 @app.callback(
     Output('salida_grafica_rec', 'children'),
@@ -313,6 +384,17 @@ def grafica_rectanguloDash(entrada_base_rec,entrada_altura_rec):
     image_element = html.Img(src="data:image/png;base64,{}".format(encoded_image))
     return html.Div([image_element])
 
+@app.callback(
+    Output('salida_grafica_cir', 'children'),
+    [Input('entrada_circulo', 'value'),
+     ]
+)
+def grafica_circuloDash(entrada_circulo):
+
+    encoded_image= graficar_circulo(entrada_circulo)
+
+    image_element = html.Img(src="data:image/png;base64,{}".format(encoded_image))
+    return html.Div([image_element])
 #para el botón calcular
 
 @app.callback(
@@ -334,7 +416,7 @@ def mostrar_calculos(n_clicks_calcular, n_clicks_rectangulo, n_clicks_circulo, n
         if n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_cuarto and not n_clicks_arco and not n_clicks_triangulo:
             return abajo_Rec  # Resultado para el rectángulo
         elif n_clicks_circulo and not n_clicks_rectangulo and not n_clicks_semicirculo and not n_clicks_cuarto and not n_clicks_arco and not n_clicks_triangulo:
-            return 'Adiós'  # Resultado para el círculo
+            return abajo_Cir  # Resultado para el círculo
         elif n_clicks_semicirculo and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_cuarto and not n_clicks_arco and not n_clicks_triangulo:
             return '¿Cómo estás?'  # Resultado para el semicírculo
         elif n_clicks_cuarto and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_arco and not n_clicks_triangulo:

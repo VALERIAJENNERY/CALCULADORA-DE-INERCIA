@@ -33,10 +33,10 @@ def graficar_rectangulo(entrada_base_rec,entrada_altura_rec):
     return encoded_image
     
 
-def graficar_circulo(r):
+def graficar_circulo(entrada_circulo):
     # Crear un arreglo de valores x e y
-    x = np.linspace(-r, r, 1000)
-    y = np.linspace(-r, r, 1000)
+    x = np.linspace(-entrada_circulo, entrada_circulo, 1000)
+    y = np.linspace(-entrada_circulo, entrada_circulo, 1000)
 
     # Crear una matriz con los valores de x e y
     X, Y = np.meshgrid(x, y)
@@ -48,21 +48,28 @@ def graficar_circulo(r):
     fig, ax = plt.subplots()
 
     # Dibujar el círculo en los ejes
-    circulo = plt.Circle((0, 0), r, linewidth=1, edgecolor='r', facecolor='grey')
+    circulo = plt.Circle((0, 0), entrada_circulo, linewidth=1, edgecolor='r', facecolor='grey')
     ax.add_artist(circulo)
 
     # Establecer las etiquetas de los ejes y el título del gráfico
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
-    ax.set_title('Círculo de Radio {}'.format(r))
+    ax.set_title('Círculo de Radio {}'.format(entrada_circulo))
 
     # Establecer los límites de los ejes
-    ax.set_xlim(-r - 0.1 * r, r + 0.1 * r)
-    ax.set_ylim(-r - 0.1 * r, r + 0.1 * r)
+    ax.set_xlim(-entrada_circulo - 0.1 * entrada_circulo, entrada_circulo + 0.1 * entrada_circulo)
+    ax.set_ylim(-entrada_circulo - 0.1 * entrada_circulo, entrada_circulo + 0.1 * entrada_circulo)
 
-    # Mostrar el gráfico
-    plt.show()
+    # Guardar la figura en un objeto BytesIO
+    fig_buffer = io.BytesIO()
+    plt.savefig(fig_buffer, format='png')
+    plt.close()
 
+    fig_buffer.seek(0)
+
+    encoded_image = base64.b64encode(fig_buffer.getvalue()).decode()
+    # Crear la figura HTML con Dash
+    return encoded_image
 
 
 def graficar_semicirculo(r):

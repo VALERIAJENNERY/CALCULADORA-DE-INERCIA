@@ -12,13 +12,17 @@ def j_rectangulo(entrada_base_rec,entrada_altura_rec):
     j_rec=((entrada_base_rec*(entrada_altura_rec**3))/12)+((entrada_altura_rec*(entrada_base_rec**3))/12)
     return j_rec
     
-def i_circulo(r): #Se crea una funcion para calcular la inercia y la constante torcional de la figura
-    ix_cir=((math.pi)*(r**4))/4 #Se realizan los calculos para las inercias y la constante torcional (J)
-    iy_cir=((math.pi)*(r**4))/4
-    j_cir=(ix_cir+iy_cir)
-    print("El momento de inercia con respecto al eje x es: ", ix_cir, "m\xb3") #Se imprimen los resultados
-    print("El momento de inercia con respecto al eje y es: ", iy_cir, "m\xb3")
-    print("La constante torcional y es: ", j_cir, "m\xb3")
+def ix_circulo(entrada_circulo): #Se crea una funcion para calcular la inercia y la constante torcional de la figura
+    ix_cir=((math.pi)*(entrada_circulo**4))/4 #Se realizan los calculos para las inercias y la constante torcional (J)
+    return ix_cir
+
+def iy_circulo(entrada_circulo): 
+    iy_cir=((math.pi)*(entrada_circulo**4))/4
+    return iy_cir
+
+def j_circulo(entrada_circulo): 
+    j_cir=(((math.pi)*(entrada_circulo**4))/4)+(((math.pi)*(entrada_circulo**4))/4)
+    return j_cir
 
 
 def i_semicirculo(r): #Se crea una funcion para calcular la inercia y la constante torcional de la figura

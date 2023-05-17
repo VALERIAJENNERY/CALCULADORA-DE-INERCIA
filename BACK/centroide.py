@@ -10,14 +10,17 @@ def cy_rectangulo(entrada_base_rec,entrada_altura_rec): #Se crea una funcion par
     cy_rec=entrada_altura_rec/2
     return cy_rec
 
-def c_circulo(r):#Se crea una funcion para calcular el centroide de la figura
-    cx_cir=r #Se calculan los centroides para el eje x y y
-    cy_cir=r
+def cx_circulo(entrada_circulo):#Se crea una funcion para calcular el centroide de la figura
+    cx_cir=entrada_circulo #Se calculan los centroides para el eje x y y
+    return cx_cir
+
+def cy_circulo(entrada_circulo):#Se crea una funcion para calcular el centroide de la figura
+    cy_cir=entrada_circulo
+    return cy_cir
     
-
-
 def c_semicirculo(r): #Se crea una funcion para calcular el centroide de la figura
     cx_semicir=0 #Se calculan los centroides para el eje x y y
+
     cy_semicir=4*r/(3*math.pi)
    
 

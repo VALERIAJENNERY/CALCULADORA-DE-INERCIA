@@ -18,3 +18,11 @@ radio_cir = dbc.Row(
 )
 
 datos_cir = html.Div(id="resultado_circulo",children=[],)
+
+
+area_circulo=html.Div(html.Label(id='salida_a_circulo'))
+cx_circulo=html.Div(html.Label(id='salida_cx_cir'))
+cy_circulo=html.Div(html.Label(id='salida_cy_cir'))
+ix_circulo=html.Div(html.Label(id='salida_ix_cir'))
+iy_circulo=html.Div(html.Label(id='salida_iy_cir'))
+j_circulo=html.Div(html.Label(id='salida_j_cir'))

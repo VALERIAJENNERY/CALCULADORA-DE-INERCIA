@@ -7,7 +7,7 @@ def a_rectangulo(entrada_base_rec,entrada_altura_rec): #Se crea una funcion para
 
 def a_circulo(entrada_circulo): #Se crea una funcion para calcular el area de la figura
     area_cir=math.pi*(entrada_circulo**2) #Se calcula el área
-    print("El área del círculo es: ", area_cir, "m\xb2") #Se imprime el resultado
+    return area_cir
 
 def a_semicirculo(entrada_semicirculo): #Se crea una funcion para calcular el area de la figura
     area_semicir=(math.pi*(entrada_semicirculo**2))/2 #Se calcula el área
@@ -25,5 +25,5 @@ def a_sectorcircular (entrada_radio_sector,entrada_angulo_sector): #Se crea una 
 
 
 def a_triangulo (entrada_base_trian,entrada_altura_trian): #Se crea una funcion para calcular el area de la figura
-    area_tri=entrada_base_trian*entrada_altura_trian #Se calcula el área
+    area_tri=(entrada_base_trian*entrada_altura_trian)/2 #Se calcula el área
     print("El área del triángulo es: ", area_tri, "m\xb2") #Se imprime el resultado
