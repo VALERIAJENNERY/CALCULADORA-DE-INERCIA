@@ -9,7 +9,7 @@ def graficar_rectangulo(entrada_base_rec,entrada_altura_rec):
     fig, ax = plt.subplots()
 
     # Dibujar el rectángulo en los ejes
-    rect = plt.Rectangle((0, 0), entrada_base_rec, entrada_altura_rec, linewidth=1, edgecolor='r', facecolor='grey')
+    rect = plt.Rectangle((0, 0), entrada_base_rec, entrada_altura_rec, linewidth=1, edgecolor='#40E0D0', facecolor='#FFD1DC')
     ax.add_patch(rect)
 
     # Establecer las etiquetas de los ejes y el título del gráfico
@@ -48,7 +48,7 @@ def graficar_circulo(entrada_circulo):
     fig, ax = plt.subplots()
 
     # Dibujar el círculo en los ejes
-    circulo = plt.Circle((0, 0), entrada_circulo, linewidth=1, edgecolor='r', facecolor='grey')
+    circulo = plt.Circle((0, 0), entrada_circulo, linewidth=1, edgecolor='#40E0D0', facecolor='#FFD1DC')
     ax.add_artist(circulo)
 
     # Establecer las etiquetas de los ejes y el título del gráfico
@@ -84,8 +84,8 @@ def graficar_semicirculo(entrada_semicirculo):
     fig, ax = plt.subplots()
 
     # Graficar el semicírculo en los ejes
-    ax.plot(x, y, linewidth=1, color='r')
-    ax.plot(x, -y, linewidth=1, color='r')
+    ax.plot(x, y, linewidth=1, color='#40E0D0')
+    ax.plot(x, -y, linewidth=1, color='#40E0D0')
 
     # Establecer las etiquetas de los ejes y el título del gráfico
     ax.set_xlabel('X')
@@ -119,8 +119,8 @@ def graficar_cuarto_circulo(entrada_cuartocirculo):
     fig, ax = plt.subplots()
 
     # Graficar el semicírculo en los ejes
-    ax.plot(x, y, linewidth=1, color='r')
-    ax.plot(x, -y, linewidth=1, color='r')
+    ax.plot(x, y, linewidth=1, color='#40E0D0')
+    ax.plot(x, -y, linewidth=1, color='#40E0D0')
 
     # Establecer las etiquetas de los ejes y el título del gráfico
     ax.set_xlabel('X')
@@ -158,7 +158,7 @@ def graficar_sector(entrada_radio_sector,entrada_angulo_sector):
     etiquetas = ['Área del sector', '']
     
     # Crear una lista de colores para el sector y el área no sombreada
-    colores = ['r', 'grey']
+    colores = ['#40E0D0', '#FFD1DC']
     
     # Crear una figura y objeto de ejes
     fig, ax = plt.subplots()
@@ -198,10 +198,10 @@ def graficar_triangulo(entrada_base_trian,entrada_altura_trian,entrada_a_trian):
     fig, ax = plt.subplots()
 
     # Graficar el triángulo en los ejes
-    ax.fill(x, y, color='grey')
+    ax.fill(x, y, color='#FFD1DC')
 
     # Agregar línea horizontal para la distancia a
-    ax.hlines(entrada_altura_trian, 0, entrada_a_trian, color='r', linestyle='--')
+    ax.hlines(entrada_altura_trian, 0, entrada_a_trian, color='#40E0D0', linestyle='--')
 
     # Agregar etiqueta para la distancia a
     ax.text(entrada_a_trian/2, entrada_altura_trian+0.05*entrada_altura_trian, 'a = {}'.format(entrada_a_trian), fontsize=12, ha='center', va='bottom')
