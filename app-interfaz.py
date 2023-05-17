@@ -19,6 +19,7 @@ from fronted.datos.datos_cuartocir import radio_cuartocir, datos_cuartocir
 from fronted.datos.datos_arco import radio_arco,datos_arco
 from fronted.datos.datos_trian import altura_trian,datos_trian
 from fronted.abajo.abajo import abajo
+from fronted.abajo.calculosRec import abajo_Rec
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],suppress_callback_exceptions=True)
 
@@ -311,6 +312,139 @@ def grafica_rectanguloDash(entrada_base_rec,entrada_altura_rec):
 
     image_element = html.Img(src="data:image/png;base64,{}".format(encoded_image))
     return html.Div([image_element])
+
+#para el botón calcular
+
+@app.callback(
+    Output('resultadocalcular', 'children'),
+    [Input('calcular', 'n_clicks')],
+    [State('boton_rectangulo', 'n_clicks'),
+     State('boton_circulo', 'n_clicks'),
+     State('boton_semicirculo', 'n_clicks'),
+     State('boton_cuartocirculo', 'n_clicks'), 
+     State('boton_arco', 'n_clicks'), 
+     State('boton_triangulo', 'n_clicks')],
+    prevent_initial_call=True
+)
+def mostrar_calculos(n_clicks_calcular, n_clicks_rectangulo, n_clicks_circulo, n_clicks_semicirculo,n_clicks_cuarto,n_clicks_arco, n_clicks_triangulo):
+    ctx = dash.callback_context
+    button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+
+    if button_id == 'calcular':
+        if n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_cuarto and not n_clicks_arco and not n_clicks_triangulo:
+            return abajo_Rec  # Resultado para el rectángulo
+        elif n_clicks_circulo and not n_clicks_rectangulo and not n_clicks_semicirculo and not n_clicks_cuarto and not n_clicks_arco and not n_clicks_triangulo:
+            return 'Adiós'  # Resultado para el círculo
+        elif n_clicks_semicirculo and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_cuarto and not n_clicks_arco and not n_clicks_triangulo:
+            return '¿Cómo estás?'  # Resultado para el semicírculo
+        elif n_clicks_cuarto and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_arco and not n_clicks_triangulo:
+            return 'mora'  # Resultado para el semicírculo
+        elif n_clicks_arco and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_cuarto and not n_clicks_triangulo:
+            return 'fresa'  # Resultado para el semicírcul       
+        elif n_clicks_triangulo and not n_clicks_rectangulo and not n_clicks_circulo and not n_clicks_semicirculo and not n_clicks_cuarto and not n_clicks_arco:
+            return 'mango'  # Resultado para el semicírcul       
+        else:
+            return ''
+
+    return None
+
+
+@app.callback(
+    Output('boton_rectangulo', 'n_clicks'),
+    [Input('calcular', 'n_clicks')],
+    [State('boton_rectangulo', 'n_clicks'),
+     State('boton_circulo', 'n_clicks'),
+     State('boton_semicirculo', 'n_clicks'),
+     State('boton_cuartocirculo', 'n_clicks'), 
+     State('boton_arco', 'n_clicks'), 
+     State('boton_triangulo', 'n_clicks')],
+    prevent_initial_call=True
+)
+def reset_rectangulo(n_clicks_calcular, n_clicks_rectangulo, n_clicks_circulo, n_clicks_semicirculo, n_clicks_cuarto,n_clicks_arco,n_clicks_triangulo ):
+    if n_clicks_calcular:
+        return 0
+    return n_clicks_rectangulo
+
+
+@app.callback(
+    Output('boton_circulo', 'n_clicks'),
+    [Input('calcular', 'n_clicks')],
+    [State('boton_rectangulo', 'n_clicks'),
+     State('boton_circulo', 'n_clicks'),
+     State('boton_semicirculo', 'n_clicks'),
+     State('boton_cuartocirculo', 'n_clicks'), 
+     State('boton_arco', 'n_clicks'), 
+     State('boton_triangulo', 'n_clicks')],
+    prevent_initial_call=True
+)
+def reset_circulo(n_clicks_calcular, n_clicks_rectangulo, n_clicks_circulo, n_clicks_semicirculo,n_clicks_cuarto,n_clicks_arco,n_clicks_triangulo ):
+    if n_clicks_calcular:
+        return 0
+    return n_clicks_circulo
+
+
+@app.callback(
+    Output('boton_semicirculo', 'n_clicks'),
+    [Input('calcular', 'n_clicks')],
+    [State('boton_rectangulo', 'n_clicks'),
+     State('boton_circulo', 'n_clicks'),
+     State('boton_semicirculo', 'n_clicks'),
+     State('boton_cuartocirculo', 'n_clicks'), 
+     State('boton_arco', 'n_clicks'), 
+     State('boton_triangulo', 'n_clicks')],
+    prevent_initial_call=True
+)
+def reset_semicirculo(n_clicks_calcular, n_clicks_rectangulo, n_clicks_circulo, n_clicks_semicirculo,n_clicks_cuarto, n_clicks_arco, n_clicks_triangulo):
+    if n_clicks_calcular:
+        return 0
+    return n_clicks_semicirculo
+
+@app.callback(
+    Output('boton_cuartocirculo', 'n_clicks'),
+    [Input('calcular', 'n_clicks')],
+    [State('boton_rectangulo', 'n_clicks'),
+     State('boton_circulo', 'n_clicks'),
+     State('boton_semicirculo', 'n_clicks'),
+     State('boton_cuartocirculo', 'n_clicks'), 
+     State('boton_arco', 'n_clicks'), 
+     State('boton_triangulo', 'n_clicks')],
+    prevent_initial_call=True
+)
+def reset_cuarto(n_clicks_calcular, n_clicks_rectangulo, n_clicks_circulo, n_clicks_semicirculo,n_clicks_cuarto,n_clicks_arco,n_clicks_triangulo):
+    if n_clicks_calcular:
+        return 0
+    return n_clicks_cuarto
+
+@app.callback(
+    Output('boton_arco', 'n_clicks'),
+    [Input('calcular', 'n_clicks')],
+    [State('boton_rectangulo', 'n_clicks'),
+     State('boton_circulo', 'n_clicks'),
+     State('boton_semicirculo', 'n_clicks'),
+     State('boton_cuartocirculo', 'n_clicks'), 
+     State('boton_arco', 'n_clicks'), 
+     State('boton_triangulo', 'n_clicks')],
+    prevent_initial_call=True
+)
+def reset_arco(n_clicks_calcular, n_clicks_rectangulo, n_clicks_circulo, n_clicks_semicirculo,n_clicks_cuarto,n_clicks_arco,n_clicks_triangulo):
+    if n_clicks_calcular:
+        return 0
+    return n_clicks_arco
+
+@app.callback(
+    Output('boton_triangulo', 'n_clicks'),
+    [Input('calcular', 'n_clicks')],
+    [State('boton_rectangulo', 'n_clicks'),
+     State('boton_circulo', 'n_clicks'),
+     State('boton_semicirculo', 'n_clicks'),
+     State('boton_cuartocirculo', 'n_clicks'), 
+     State('boton_arco', 'n_clicks'), 
+     State('boton_triangulo', 'n_clicks')],
+    prevent_initial_call=True
+)
+def reset_arco(n_clicks_calcular, n_clicks_rectangulo, n_clicks_circulo, n_clicks_semicirculo,n_clicks_cuarto,n_clicks_arco,n_clicks_triangulo):
+    if n_clicks_calcular:
+        return 0
+    return n_clicks_triangulo
 if __name__ == "__main__":
     app.run_server(debug=True)
-

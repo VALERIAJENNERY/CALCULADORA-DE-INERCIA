@@ -2,7 +2,6 @@ from dash import html # importar dash
 import dash_bootstrap_components as dbc #importar los componentes del Bootstrap
 from fronted.datos.datos_rec import *
 
-
 # Se crea una lista de propiedades para rectangulo
 
 row1_rec = html.Tr([html.Td("Inercía (Iy)"), html.Td(iy_rectangulo)])
@@ -22,29 +21,3 @@ table_rec = dbc.Table( table_body_rec, bordered=True,
                                "text-align": "center",
                                'border': '0.5px solid purple'}
 )
-
-propiedades = html.Div(
-    [  # Se crea una fila.
-        dbc.Row(
-            [
-                dbc.Col('PROPIEDADES GEOMÉTRICAS', md=12, style ={'background-color': 'purple', 
-                               "font-family": "Arial Narrow", 
-                               "color": "white", 
-                               "font-weight": "bold", 
-                               "text-align": "center",
-                               'border': '0.5px solid purple',
-                               'margin-bottom': '10px'}) # Se crea una columna con el titulo.
-            ],
-        ), 
-        dbc.Row(
-            [
-                dbc.Col(html.Div(
-                    dbc.Row(
-                        dbc.Col(table_rec, width={'size': 10, 'offset': 0}),justify='center',align='center')
-    ),
-    style={'background-color': '#C88DD'}
-)
-            ],
-        ), 
-])
-
