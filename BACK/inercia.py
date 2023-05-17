@@ -26,15 +26,15 @@ def j_circulo(entrada_circulo):
 
 
 def ix_semicirculo(entrada_semicirculo): #Se crea una funcion para calcular la inercia y la constante torcional de la figura
-    ix_semicir=((math.pi)*(entrada_semicirculo**4))/8 #Se realizan los calculos para las inercias y la constante torcional (J)
+    ix_semicir=0.1098*(entrada_semicirculo**4) #Se realizan los calculos para las inercias y la constante torcional (J)
     return ix_semicir
 
 def iy_semicirculo(entrada_semicirculo): #Se crea una funcion para calcular la inercia y la constante torcional de la figura
-    iy_semicir=((math.pi)*(entrada_semicirculo**4))/8
+    iy_semicir=0.1098*(entrada_semicirculo**4)
     return iy_semicir
 
 def j_semicirculo(entrada_semicirculo):
-    j_semicir=(((math.pi)*(entrada_semicirculo**4))/8)*2
+    j_semicir=0.1098*(entrada_semicirculo**4)*2
     return j_semicir
     
 
@@ -64,10 +64,14 @@ def j_sectorcircular (entrada_radio_sector,entrada_angulo_sector):
     j_seccir=((entrada_radio_sector**4)*((entrada_angulo_sector)-(math.sin(entrada_angulo_sector)))/8)+((entrada_radio_sector**4)*((entrada_angulo_sector)+(math.sin(entrada_angulo_sector)))/8)
     return j_seccir
 
-def i_triangulo (b,h,a): #Se crea una funcion para calcular la inercia y la constante torcional de la figura
-    ix_tri=b*(h**3)/36 #Se realizan los calculos para las inercias y la constante torcional (J)
-    iy_tri=b*(h**3)*((a**2)-a*b+(b**2))/36
-    j_tri=(ix_tri+iy_tri)
-    print("El momento de inercia con respecto al eje x es: ", ix_tri, "m\xb3") #Se imprimen los resultados
-    print("El momento de inercia con respecto al eje y es: ", iy_tri, "m\xb3")
-    print("La constante torcional y es: ", j_tri, "m\xb3")
+def ix_triangulo (entrada_base_trian,entrada_altura_trian,entrada_a_trian): #Se crea una funcion para calcular la inercia y la constante torcional de la figura
+    ix_tri=entrada_base_trian*(entrada_altura_trian**3)/36 #Se realizan los calculos para las inercias y la constante torcional (J)
+    return ix_tri
+
+def iy_triangulo (entrada_base_trian,entrada_altura_trian,entrada_a_trian):
+    iy_tri=entrada_base_trian*(entrada_altura_trian**3)*((entrada_a_trian**2)-entrada_a_trian*entrada_base_trian+(entrada_base_trian**2))/36
+    return iy_tri
+
+def j_triangulo (entrada_base_trian,entrada_altura_trian,entrada_a_trian):
+    j_tri=(entrada_base_trian*(entrada_altura_trian**3)/36)+(entrada_base_trian*(entrada_altura_trian**3)*((entrada_a_trian**2)-entrada_a_trian*entrada_base_trian+(entrada_base_trian**2))/36)
+    return j_tri
