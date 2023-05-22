@@ -53,15 +53,15 @@ def j_cuartodecirculo (entrada_cuartocirculo):
 
 
 def ix_sectorcircular (entrada_radio_sector,entrada_angulo_sector): #Se crea una funcion para calcular la inercia y la constante torcional de la figura
-    ix_seccir=(entrada_radio_sector**4)*((entrada_angulo_sector)-(math.sin(entrada_angulo_sector)))/8 #Se realizan los calculos para las inercias y la constante torcional (J)
+    ix_seccir=(entrada_radio_sector**4)*((math.radians(entrada_angulo_sector))-(math.sin(math.radians(entrada_angulo_sector))))/8 #Se realizan los calculos para las inercias y la constante torcional (J)
     return ix_seccir
 
 def iy_sectorcircular (entrada_radio_sector,entrada_angulo_sector):
-    iy_seccir=(entrada_radio_sector**4)*((entrada_angulo_sector)+(math.sin(entrada_angulo_sector)))/8
+    iy_seccir=(entrada_radio_sector**4)*((math.radians(entrada_angulo_sector))+(math.sin(math.radians(entrada_angulo_sector))))/8
     return iy_seccir
 
 def j_sectorcircular (entrada_radio_sector,entrada_angulo_sector):
-    j_seccir=((entrada_radio_sector**4)*((entrada_angulo_sector)-(math.sin(entrada_angulo_sector)))/8)+((entrada_radio_sector**4)*((entrada_angulo_sector)+(math.sin(entrada_angulo_sector)))/8)
+    j_seccir=((entrada_radio_sector**4)*((math.radians(entrada_angulo_sector))-(math.sin((math.radians(entrada_angulo_sector)))))/8)+((entrada_radio_sector**4)*(((math.radians(entrada_angulo_sector)))+(math.sin((math.radians(entrada_angulo_sector)))))/8)
     return j_seccir
 
 def ix_triangulo (entrada_base_trian,entrada_altura_trian,entrada_a_trian): #Se crea una funcion para calcular la inercia y la constante torcional de la figura

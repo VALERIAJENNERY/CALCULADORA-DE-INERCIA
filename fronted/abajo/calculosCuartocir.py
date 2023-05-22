@@ -45,7 +45,7 @@ abajo_Cuartocir = dbc.Container(
                                     [
                                         dbc.Col(html.Div(
                                             dbc.Row(
-                                                dbc.Col(table_seccir, width={'size': 10, 'offset': 0}),justify='center',align='center')
+                                                dbc.Col(table_cuartocir, width={'size': 10, 'offset': 0}),justify='center',align='center')
                             ),
                             style={'background-color': '#C88DD'}
                         )
