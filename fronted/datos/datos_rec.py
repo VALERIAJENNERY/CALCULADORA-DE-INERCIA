@@ -1,23 +1,23 @@
-import dash_bootstrap_components as dbc
-from dash import html
-from dash import dcc
+import dash_bootstrap_components as dbc  # Importa el módulo dash_bootstrap_components con alias dbc
+from dash import html  # Importa la clase html del módulo dash
+from dash import dcc  # Importa la clase dcc del módulo dash
 
-altura_rec = dbc.Row(
+altura_rec = dbc.Row(  # Crea una fila utilizando el componente Row de dbc y asigna el resultado a la variable altura_rec
     [
-        html.Div(
+        html.Div(  # Crea un div utilizando el componente Div de html
             [
-                html.Label('Altura (H): ', style={'display': 'inline-block', 'width': '120px'}),
-                dcc.Input(id='entrada_altura_rec', value=5, type='number', style={'display': 'inline-block','margin-bottom': '10px'}),
-                html.Label('m', style={'display': 'inline-block', 'width': '120px'}),
-                html.Hr(style={'display': 'none'})
+                html.Label('Altura (H): ', style={'display': 'inline-block', 'width': '120px'}),  # Crea una etiqueta de texto utilizando el componente Label de html con estilo
+                dcc.Input(id='entrada_altura_rec', value=5, type='number', style={'display': 'inline-block','margin-bottom': '10px'}),  # Crea un campo de entrada numérico utilizando el componente Input de dcc con estilo
+                html.Label('m', style={'display': 'inline-block', 'width': '120px'}),  # Crea una etiqueta de texto utilizando el componente Label de html con estilo
+                html.Hr(style={'display': 'none'})  # Crea un separador horizontal utilizando el componente Hr de html con estilo
             ]
         ),
-        html.Div(
+        html.Div(  # Crea un div utilizando el componente Div de html
             [
-                html.Label('Base (B): ', style={'display': 'inline-block', 'width': '120px'}),
-                dcc.Input(id='entrada_base_rec', value=5.5, type='number', style={'display': 'inline-block','margin-bottom': '10px'}),
-                html.Label('m', style={'display': 'inline-block', 'width': '120px'}),
-                html.Hr(style={'display': 'none'})
+                html.Label('Base (B): ', style={'display': 'inline-block', 'width': '120px'}),  # Crea una etiqueta de texto utilizando el componente Label de html con estilo
+                dcc.Input(id='entrada_base_rec', value=5.5, type='number', style={'display': 'inline-block','margin-bottom': '10px'}),  # Crea un campo de entrada numérico utilizando el componente Input de dcc con estilo
+                html.Label('m', style={'display': 'inline-block', 'width': '120px'}),  # Crea una etiqueta de texto utilizando el componente Label de html con estilo
+                html.Hr(style={'display': 'none'})  # Crea un separador horizontal utilizando el componente Hr de html con estilo
             ]
         ),
         
@@ -25,11 +25,10 @@ altura_rec = dbc.Row(
     ]
 )
 
-datos_rec = html.Div(id="resultado_rectangulo",children=[],)
-
-area_rectangulo=html.Div(html.Label(id='salida_altura_rec'))
-cx_rectangulo=html.Div(html.Label(id='salida_cx_rec'))
-cy_rectangulo=html.Div(html.Label(id='salida_cy_rec'))
-ix_rectangulo=html.Div(html.Label(id='salida_ix_rec'))
-iy_rectangulo=html.Div(html.Label(id='salida_iy_rec'))
-j_rectangulo=html.Div(html.Label(id='salida_j_rec'))
+datos_rec = html.Div(id="resultado_rectangulo", children=[]),  # Crea un div vacío con un ID específico y asigna el resultado a la variable datos_rec
+area_rectangulo = html.Div(html.Label(id='salida_altura_rec'))  # Crea un div con una etiqueta de texto y un ID específico y asigna el resultado a la variable para el area
+cx_rectangulo = html.Div(html.Label(id='salida_cx_rec'))  # Crea un div con una etiqueta de texto y un ID específico y asigna el resultado a la variable para el centroide en x
+cy_rectangulo = html.Div(html.Label(id='salida_cy_rec'))  # Crea un div con una etiqueta de texto y un ID específico y asigna el resultado a la variable para el centroide en y
+ix_rectangulo = html.Div(html.Label(id='salida_ix_rec'))  # Crea un div con una etiqueta de texto y un ID específico y asigna el resultado a la variable para el momento de inercia en x
+iy_rectangulo = html.Div(html.Label(id='salida_iy_rec'))  # Crea un div con una etiqueta de texto y un ID específico y asigna el resultado a la variable para el momento de inercia en y
+j_rectangulo = html.Div(html.Label(id='salida_j_rec'))  # Crea un div con una etiqueta de texto y un ID específico y asigna el resultado a la variable para j

@@ -1,7 +1,8 @@
-import matplotlib.pyplot as plt
-import numpy as np
-import io
-import base64
+import matplotlib.pyplot as plt  # Importa el módulo pyplot de matplotlib y lo asigna a la variable 'plt'
+import numpy as np  # Importa el módulo numpy y lo asigna a la variable 'np'
+import io  # Importa el módulo io
+import base64  # Importa el módulo base64
+
 
 def graficar_rectangulo(entrada_base_rec,entrada_altura_rec):
     #  Se crea la figura y el objeto de los ejes
